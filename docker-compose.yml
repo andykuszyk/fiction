@@ -1,0 +1,14 @@
+version: "3.3"
+
+services:
+    akuszyk:
+        build: .
+        ports:
+            - 8080:80
+
+    gic:
+        image: andykuszyk/gitlab-issue-comments
+        ports:
+            - 8081:8080
+        environment:
+            - GITLAB_TOKEN=token
