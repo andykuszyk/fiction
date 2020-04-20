@@ -52,7 +52,7 @@ with open(os.path.join(dirname, 'index.html'), 'w') as f:
     f.write('''
 <html>
     <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        
     </head>
     <body>
     <div class="container">
@@ -85,8 +85,42 @@ for i in range(0, len(chapters)):
         f.write('''
 <html>
     <head>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    </head>
+       <style>
+            ul.timeline {
+                list-style-type: none;
+                position: relative;
+            }
+            ul.timeline:before {
+                content: ' ';
+                background: #d4d9df;
+                display: inline-block;
+                position: absolute;
+                left: 29px;
+                width: 2px;
+                height: 100%;
+                z-index: 400;
+            }
+            ul.timeline > li {
+                margin: 20px 0;
+                padding-left: 20px;
+            }
+            ul.timeline > li:before {
+                content: ' ';
+                background: white;
+                display: inline-block;
+                position: absolute;
+                border-radius: 50%;
+                border: 3px solid #22c0e8;
+                left: 20px;
+                width: 20px;
+                height: 20px;
+                z-index: 400;
+            }
+        </style>
+   </head>
     <body>
     <div class="container">
         <div class="row">
@@ -118,6 +152,64 @@ for i in range(0, len(chapters)):
                 </p>
             </div>
         </div>
+        <div id="app" class="row">
+            <div class="col-md-6 offset-md-3">
+                <h4>Comments</h4>
+                <ul class="timeline">
+                    <li>
+                        <form>
+                            <div class="form-group">
+                                <label for="commentInput">All comments are welcome, especially constructive ones!</label>
+                                <textarea v-model="newComment" class="form-control" id="commentInput" rows="3"></textarea>
+                                <button type="button" class="btn btn-primary" v-on:click="submitComment">Submit</button>
+                            </div>
+                        </form>
+                    </li>
+                    <li v-for="comment in comments">
+                        <p><b>{{ comment.createdAt }}</b></p>
+                        <p>{{ comment.body }}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <script>
+            loadComments = function() {
+                $.get('/api/topics/18159567/comments', function(data) {
+                    console.log(typeof(data))
+                    comments = []
+                    for(d of data) {
+                        createdAt = new Date(d.CreatedAt)
+                        comments.push({createdAt: `${createdAt.toLocaleString()}`, body: d.Body})
+                    }
+                    app.$data.comments = comments
+                })
+            }
+
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    newComment: '',
+                    comments: []
+                },
+                methods: {
+                    submitComment: function() {
+                        console.log(app.newComment)
+                        $.post({
+                            url: '/api/topics/18159567/comments',
+                            data: JSON.stringify({Body: app.newComment}), 
+                            contentType: 'application/json'
+                        }, function() {
+                            loadComments()
+                            app.newComment = ''
+                        })
+                    }
+                }
+            })
+
+           loadComments() 
+        </script>
+
     </div>
     </body>
 </html>''')
