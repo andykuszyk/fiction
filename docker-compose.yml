@@ -4,7 +4,7 @@ services:
     akuszyk:
         build: .
         ports:
-            - 8080:80
+            - 80:80
 
     gic:
         image: andykuszyk/gitlab-issue-comments
