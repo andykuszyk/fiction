@@ -79,17 +79,16 @@ for chapter in chapters:
     <body>
     <div class="container">
         <div class="row">
-            <div class="col">''')
+            <div class="col-lg">''')
         f.write('<h1>{}</h1>\n'.format(title))
         f.write('<h2>{}</h2>\n'.format(chapter['title']))
         f.write('''
             </div>
-            <div class="col"></div>
-            <div class="col"></div>
+            <div class="col-sm"></div>
         </div>
         <div class="row">
-            <div class="col"></div>
-            <div class="col">''')
+            <div class="col-sm"></div>
+            <div class="col-lg">''')
         for line in chapter['lines']:
             f.write('{}\n'.format(
                 line
@@ -100,7 +99,6 @@ for chapter in chapters:
             ))
         f.write('''
             </div>
-            <div class="col"></div>
         </div>
     </div>
     </body>
