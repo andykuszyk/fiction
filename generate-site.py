@@ -58,17 +58,28 @@ with open(os.path.join(dirname, 'index.html'), 'w') as f:
     <div class="container">
         <div class="row">
             <div class="col">''')
-    f.write('<h1>{}</h1>\n'.format(title))
-    for chapter in chapters:
-        f.write('<a href="/{}/{}.html"><h2>{}</h2></a>\n'.format(dirname, chapter['id'], chapter['title']))
+    f.write('<h1 class="display-1">{}</h1>\n'.format(title))
     f.write('''
+                <ol>''')
+    for chapter in chapters:
+        f.write('<a href="/{}/{}.html"><h3><li>{}</li></h3></a>\n'.format(dirname, chapter['id'], chapter['title']))
+    f.write('''
+                </ol>
             </div>
         </div>
     </div>
     </body>
 </html>''')
 
-for chapter in chapters:
+for i in range(0, len(chapters)):
+    chapter = chapters[i]
+    previous_link = '/{}'.format(dirname)
+    if i > 0:
+        previous_link = '/{}/{}.html'.format(dirname, chapters[i-1]['id'])
+    next_link = '/{}'.format(dirname)
+    if i < len(chapters) - 1:
+        next_link = '/{}/{}.html'.format(dirname, chapters[i+1]['id'])
+
     print(chapter['title'])
     with open(os.path.join(dirname, '{}.html'.format(chapter['id'])), 'w') as f:
         f.write('''
@@ -98,6 +109,13 @@ for chapter in chapters:
                     .replace('*', '<hr>')
             ))
         f.write('''
+            <hr>
+            <p style="text-align:center">''')
+        f.write('<a href="{}">Previous</a>'.format(previous_link))
+        f.write(' | ')
+        f.write('<a href="{}">Next</a>'.format(next_link))
+        f.write('''
+                </p>
             </div>
         </div>
     </div>
