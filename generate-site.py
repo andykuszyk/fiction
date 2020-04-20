@@ -91,7 +91,13 @@ for chapter in chapters:
             <div class="col"></div>
             <div class="col">''')
         for line in chapter['lines']:
-            f.write('{}\n'.format(line))
+            f.write('{}\n'.format(
+                line
+                    .replace('“', '"')
+                    .replace('”', '"')
+                    .replace('’', "'")
+                    .replace('*', '<hr>')
+            ))
         f.write('''
             </div>
             <div class="col"></div>
