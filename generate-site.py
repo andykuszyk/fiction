@@ -57,15 +57,24 @@ with open(os.path.join(dirname, 'index.html'), 'w') as f:
     <body>
     <div class="container">
         <div class="row">
-            <div class="col">''')
-    f.write('<h1 class="display-1">{}</h1>\n'.format(title))
+            <div class="col-lg">''')
+    f.write('<h1>{}</h1>\n'.format(title))
     f.write('''
+                <h2>Chapters</h2>
+                <hr>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-lg">
                 <ol>''')
     for chapter in chapters:
         f.write('<a href="/{}/{}.html"><h3><li>{}</li></h3></a>\n'.format(dirname, chapter['id'], chapter['title']))
     f.write('''
                 </ol>
             </div>
+            <div class="col-sm"></div>
         </div>
     </div>
     </body>
@@ -128,6 +137,7 @@ for i in range(0, len(chapters)):
         f.write('<h1>{}</h1>\n'.format(title))
         f.write('<h2>{}</h2>\n'.format(chapter['title']))
         f.write('''
+                <hr>
             </div>
             <div class="col-sm"></div>
         </div>
