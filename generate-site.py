@@ -191,7 +191,7 @@ for i in range(0, len(chapters)):
 
         <script>
             loadComments = function() {
-                $.get('/api/topics/18159567/comments', function(data) {
+                $.get('/topics/18159567/comments', function(data) {
                     console.log(typeof(data))
                     comments = []
                     for(d of data) {
@@ -212,7 +212,7 @@ for i in range(0, len(chapters)):
                     submitComment: function() {
                         console.log(app.newComment)
                         $.post({
-                            url: '/api/topics/18159567/comments',
+                            url: '/topics/18159567/comments',
                             data: JSON.stringify({Body: app.newComment}), 
                             contentType: 'application/json'
                         }, function() {
