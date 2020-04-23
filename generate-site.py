@@ -59,7 +59,9 @@ with open(os.path.join(dirname, 'index.html'), 'w') as f:
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'UA-164357380-1');
-        </script>
+        </script>''')
+    f.write('<title>A. Kuszyk | {}</title>'.format(title))
+    f.write('''
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        
@@ -111,7 +113,9 @@ for i in range(0, len(chapters)):
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'UA-164357380-1');
-        </script>
+        </script>''')
+        f.write('<title>A. Kuszyk | {} - {}</title>'.format(title, chapter['title']))
+        f.write('''
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -205,7 +209,7 @@ for i in range(0, len(chapters)):
 
         <script>
             loadComments = function() {
-                $.get('/topics/18159567/comments', function(data) {
+                $.get('/topics/16275216/comments', function(data) {
                     console.log(typeof(data))
                     comments = []
                     for(d of data) {
@@ -226,7 +230,7 @@ for i in range(0, len(chapters)):
                     submitComment: function() {
                         console.log(app.newComment)
                         $.post({
-                            url: '/topics/18159567/comments',
+                            url: '/topics/16275216/comments',
                             data: JSON.stringify({Body: app.newComment}), 
                             contentType: 'application/json'
                         }, function() {
