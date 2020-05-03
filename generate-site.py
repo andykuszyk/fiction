@@ -3,6 +3,7 @@ import sys
 import os
 import re
 import logging
+import shutil
 
 
 def make_title(d):
@@ -75,6 +76,36 @@ def bootstrap():
     '''
 
 
+def downloads(filename, dirname):
+    title = os.path.splitext(filename)[0]
+    files = []
+    for extension in ['pdf', 'epub']:
+        download = '{}.{}'.format(title, extension)
+        if os.path.exists(download):
+            files.append(download)
+            shutil.copyfile(download, os.path.join(dirname, download))
+    print('Found downloads: {}'.format(files))
+    return files
+
+
+def download_links(download_files):
+    if len(download_files) == 0:
+        return ''
+    links = '<h3>'
+    for download in download_files:
+        links += '<a href="{}">{}</a>  |  '.format(download, get_download_name(download))
+    return '{}</h3>'.format(links[:-4])
+
+
+def get_download_name(download):
+    if 'pdf' in download:
+        return 'PDF'
+    elif 'epub' in download:
+        return 'EPUB'
+    else:
+        return ''
+
+
 def write_index(dirname, chapters):
     print('Found {} chapters'.format(len(chapters)))
     with open(os.path.join(dirname, 'index.html'), 'w') as f:
@@ -108,6 +139,20 @@ def write_index(dirname, chapters):
                     </ol>
                 </div>
                 <div class="col-sm"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg">
+                    <h2>Downloads</h2>
+                    <hr>
+                </div>
+                <div class="col-sm"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm"></div>
+                <div class="col-lg">''')
+        f.write(download_links(downloads(filename, dirname)))
+        f.write('''
+                </div>
             </div>
         </div>
         </body>

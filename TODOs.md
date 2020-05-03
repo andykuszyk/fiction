@@ -1,0 +1,11 @@
+ - [x] Text is too small on mobile
+ - [x] Routing to API doesn't work
+ - [x] Test comments
+ - [x] Google Analytics for each page
+ - [x] Configure comments for correct repo
+ - [x] Titles
+ - [x] Pipeline from latex repo
+ - [ ] Parameterise generator to take project id as argument 
+ - [ ] Include page name in comment title or body
+ - [ ] Split chapters into smaller pages accessible by URLs
+ - [x] Add a download link to PDF and EPUB files
