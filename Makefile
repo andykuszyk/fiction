@@ -12,4 +12,10 @@ deploy:
 
 generate-the-kingdom-of-tharg:
 	rm -rf the-kingdom-of-tharg/
-	./generate-site.py the-kingdom-of-tharg.html
+	python3 -m generator.generator the-kingdom-of-tharg.html
+
+test:
+	python3 -m generator.tests.parsing
+
+watch-test:
+	find . | grep -v .git --include '*.py' | entr -c make test

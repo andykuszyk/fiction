@@ -7,5 +7,5 @@
  - [x] Pipeline from latex repo
  - [ ] Parameterise generator to take project id as argument 
  - [ ] Include page name in comment title or body
- - [ ] Split chapters into smaller pages accessible by URLs
+ - [x] Split chapters into smaller pages accessible by URLs
  - [x] Add a download link to PDF and EPUB files
