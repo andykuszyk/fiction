@@ -1,0 +1,135 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164357380-1"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-164357380-1');
+</script>
+    <title>A. Kuszyk | The Kingdom Of Tharg - Home Time (10/10)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        
+    
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    ul.timeline {
+        list-style-type: none;
+        position: relative;
+    }
+    ul.timeline:before {
+        content: ' ';
+        background: #d4d9df;
+        display: inline-block;
+        position: absolute;
+        left: 29px;
+        width: 2px;
+        height: 100%;
+        z-index: 400;
+    }
+    ul.timeline > li {
+        margin: 20px 0;
+        padding-left: 20px;
+    }
+    ul.timeline > li:before {
+        content: ' ';
+        background: white;
+        display: inline-block;
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid #22c0e8;
+        left: 20px;
+        width: 20px;
+        height: 20px;
+        z-index: 400;
+    }
+</style>
+    
+    </head>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg"><h1>The Kingdom Of Tharg</h1>
+<h2>Home Time</h2>
+<h3>Part 10/10
+
+                <hr>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-lg"><p>"Why yes! That means that- well, far from being beyond hope of rescue or recovery, they're all right where I left them. And! Not only are they all still there, but when we return we shall be armed with the power of surprise and daring speed compared to those oafish thugs that Tharg was keeping company with! We can storm that fortress of his, slay our enemies and rescue my friends. Perhaps we can break the Mirror to boot and return home by the same path that took us there! We may be saved!"</p>
+<p>The mage was stunned by this outburst. Despite his clearer understanding of their current predicament, he could never have guessed that it would lead to these conclusions in the other man's mind. He raised an eyebrow and gave it some thought. Retrace their steps to the palace of Tharg? Not easy. Rescue Calir's party from Tharg's clutches? Unlikely. Defeat the Mirror herself? Impossible! Still, based on the renewed look of hope on Calir's face, the mage could see that he wouldn't stop unless he had tried. And, for all his reluctance to embark on another quest into the interior of the Ice Continent, Aevum felt that his part to play in Calir's fate wasn't yet over. And so, despite his reservations, he resolved to help the man achieve his hopes at best and save him from an evil death at worst.</p>
+<p>"Indeed," he said, and Calir smiled in response. The smile of innocence in the face of great challenge and even greater darkness. The smile that only a child of Domum could wear at a time like this."let us begin then, friend Calir, let us begin again."</p>
+
+                <hr>
+                <p style="text-align:center">| <a href="home-time-1.html">1</a> | <a href="home-time-2.html">2</a> | <a href="home-time-3.html">3</a> | <a href="home-time-4.html">4</a> | <a href="home-time-5.html">5</a> | <a href="home-time-6.html">6</a> | <a href="home-time-7.html">7</a> | <a href="home-time-8.html">8</a> | <a href="home-time-9.html">9</a> | 10 |<br><a href="/the-kingdom-of-tharg/finding-home-1.html">Previous Chapter</a> | <a href="/the-kingdom-of-tharg/the-call-of-the-mirror-1.html">Next Chapter</a>
+                </p>
+            </div>
+        </div>
+<div id="app" class="row">
+    <div class="col-md-6 offset-md-3">
+        <h4>Comments</h4>
+        <ul class="timeline">
+            <li>
+                <form>
+                    <div class="form-group">
+                        <label for="commentInput">All comments are welcome, especially constructive ones!</label>
+                        <textarea v-model="newComment" class="form-control" id="commentInput" rows="3"></textarea>
+                        <button type="button" class="btn btn-primary" v-on:click="submitComment">Submit</button>
+                    </div>
+                </form>
+            </li>
+            <li v-for="comment in comments">
+                <p><b>{{ comment.createdAt }}</b></p>
+                <p>{{ comment.body }}</p>
+            </li>
+        </ul>
+    </div>
+</div>
+    
+<script>
+        loadComments = function() {
+            $.get('/topics/16275216/comments', function(data) {
+                console.log(typeof(data))
+                comments = []
+                for(d of data) {
+                    createdAt = new Date(d.CreatedAt)
+                    comments.push({createdAt: `${createdAt.toLocaleString()}`, body: d.Body})
+                }
+                app.$data.comments = comments
+            })
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                newComment: '',
+                comments: []
+            },
+            methods: {
+                submitComment: function() {
+                console.log(app.newComment)
+                $.post({
+                    url: '/topics/16275216/comments',
+                    data: JSON.stringify({Body: app.newComment}), 
+                    contentType: 'application/json'
+                }, function() {
+                    loadComments()
+                    app.newComment = ''
+                })
+            }
+        }
+    })
+
+   loadComments() 
+</script>
+ 
+    </div>
+    </body>
+</html>

@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164357380-1"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-164357380-1');
+</script>
+    <title>A. Kuszyk | The Kingdom Of Tharg - A Doorway of Doorways (4/6)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        
+    
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    ul.timeline {
+        list-style-type: none;
+        position: relative;
+    }
+    ul.timeline:before {
+        content: ' ';
+        background: #d4d9df;
+        display: inline-block;
+        position: absolute;
+        left: 29px;
+        width: 2px;
+        height: 100%;
+        z-index: 400;
+    }
+    ul.timeline > li {
+        margin: 20px 0;
+        padding-left: 20px;
+    }
+    ul.timeline > li:before {
+        content: ' ';
+        background: white;
+        display: inline-block;
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid #22c0e8;
+        left: 20px;
+        width: 20px;
+        height: 20px;
+        z-index: 400;
+    }
+</style>
+    
+    </head>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg"><h1>The Kingdom Of Tharg</h1>
+<h2>A Doorway of Doorways</h2>
+<h3>Part 4/6
+
+                <hr>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-lg"><p>"My Lord is merciful, very merciful, yes, thank ye, thank ye," and he dropped to the other knee and bowed fully forwards until his face touched the floor.</p>
+<p>Calir wasn't quite sure what to do about this, so he said the only thing that felt right under the circumstances.</p>
+<p>"You may rise, my child, now, tell me what you know."</p>
+<p>"Why of course, of course!"</p>
+<p>With this, Capra the humble shepherd launched into a tale of his farming life, in the distant province of Pratum. Every day was the same for him, tending his flock, working the fields, but today his favourite goat - Millie - had been missing at the end of the day and he'd set off in search of her. He'd been crossing the meadow where she normally grazed and had stumbled through this mysterious doorway and had ended up here.</p>
+<p>"I just hope that my story is good enough for you, your majesty, 'cos I've not left out a single detail, I promise! I'll show you my farm if you like, if it would please you my Lord, or anything else you command, just let poor little Millie and I go free!"</p>
+<p>This boy seemed to have an odd idea of what Calir might be about to do with him and the goat and Calir couldn't understand why he was so afraid. Apart from this rubbish about "my Lord" and "your Majesty", which Calir was going along with to be polite, they were quickly become fast friends - Calir thought.</p>
+<p>"Very well, very well, good Capra, I believe you, and your home sounds like a pleasant and gentle place."</p>
+<p>"It is, it is, my Lord!"</p>
+<p>"And I may well take you up on your offer," Calir continued, "but I'm afraid to say that you may be trapped here now, just as I am!"</p>
+
+                <hr>
+                <p style="text-align:center">| <a href="a-doorway-of-doorways-1.html">1</a> | <a href="a-doorway-of-doorways-2.html">2</a> | <a href="a-doorway-of-doorways-3.html">3</a> | 4 | <a href="a-doorway-of-doorways-5.html">5</a> | <a href="a-doorway-of-doorways-6.html">6</a> |<br><a href="/the-kingdom-of-tharg/the-call-of-the-mirror-1.html">Previous Chapter</a> | <a href="/the-kingdom-of-tharg/the-kingdom-of-tharg-1.html">Next Chapter</a>
+                </p>
+            </div>
+        </div>
+<div id="app" class="row">
+    <div class="col-md-6 offset-md-3">
+        <h4>Comments</h4>
+        <ul class="timeline">
+            <li>
+                <form>
+                    <div class="form-group">
+                        <label for="commentInput">All comments are welcome, especially constructive ones!</label>
+                        <textarea v-model="newComment" class="form-control" id="commentInput" rows="3"></textarea>
+                        <button type="button" class="btn btn-primary" v-on:click="submitComment">Submit</button>
+                    </div>
+                </form>
+            </li>
+            <li v-for="comment in comments">
+                <p><b>{{ comment.createdAt }}</b></p>
+                <p>{{ comment.body }}</p>
+            </li>
+        </ul>
+    </div>
+</div>
+    
+<script>
+        loadComments = function() {
+            $.get('/topics/16275216/comments', function(data) {
+                console.log(typeof(data))
+                comments = []
+                for(d of data) {
+                    createdAt = new Date(d.CreatedAt)
+                    comments.push({createdAt: `${createdAt.toLocaleString()}`, body: d.Body})
+                }
+                app.$data.comments = comments
+            })
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                newComment: '',
+                comments: []
+            },
+            methods: {
+                submitComment: function() {
+                console.log(app.newComment)
+                $.post({
+                    url: '/topics/16275216/comments',
+                    data: JSON.stringify({Body: app.newComment}), 
+                    contentType: 'application/json'
+                }, function() {
+                    loadComments()
+                    app.newComment = ''
+                })
+            }
+        }
+    })
+
+   loadComments() 
+</script>
+ 
+    </div>
+    </body>
+</html>

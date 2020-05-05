@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164357380-1"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-164357380-1');
+</script>
+    <title>A. Kuszyk | The Kingdom Of Tharg - The Dark Mirror (5/7)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        
+    
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    ul.timeline {
+        list-style-type: none;
+        position: relative;
+    }
+    ul.timeline:before {
+        content: ' ';
+        background: #d4d9df;
+        display: inline-block;
+        position: absolute;
+        left: 29px;
+        width: 2px;
+        height: 100%;
+        z-index: 400;
+    }
+    ul.timeline > li {
+        margin: 20px 0;
+        padding-left: 20px;
+    }
+    ul.timeline > li:before {
+        content: ' ';
+        background: white;
+        display: inline-block;
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid #22c0e8;
+        left: 20px;
+        width: 20px;
+        height: 20px;
+        z-index: 400;
+    }
+</style>
+    
+    </head>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg"><h1>The Kingdom Of Tharg</h1>
+<h2>The Dark Mirror</h2>
+<h3>Part 5/7
+
+                <hr>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-lg"><p>"A portal where? Can we go back to Domum?"</p>
+<p>"Domum? I am unfamiliar with that place."</p>
+<p>"Well! Not heard of Domum? What kind of mage do you call yourself?"</p>
+<p>"A Dark one, friend."</p>
+<p>Calir paused briefly, evaluating the ominous expression on the mage's face, before carrying on lightly.</p>
+<p>"Domum is my home continent, filled with small townships, green pastures and gentle rivers. Its warm in the Summers, mild in the Winters and a joy in the Spring! I've lived there all my life, apart from these short forays into the mountains - none of which have gone awry until now I should say - and would dearly love to get back there. No more of this ice and cold, Dark Magic and cocooned prison cells. Just warm evenings, good mead and hearty suppers. You'll like it there Aevum, it will put some colour on your cheeks and some meat on your bones! You'll be a different man there, I promise - it makes the best of everyone! Not like this place. This place seems to bring out the worst, especially of that bully Tharg and his cronies."</p>
+<p>A shiver ran down Calir's spine as he recalled the recent past and his current predicament. He had almost forgotten himself in his recollections of home. But, all of a sudden, he found himself cold and shivering against the stone-cold floor. He got up stiffly and stamped his feet, rubbing his arms.</p>
+<p>"Anywhere my good man, let's just get this over with and get anywhere but here. Then, I'm sure we can find our way back home. My sense of direction (never failed me before now), and your resourcefulness. We'll be back to Domum continent in a jiffy. Let's just escape from this awful place and put as much distance between us and Tharg as possible!"</p>
+<p>A silence spread out from these words as Calir slowly stopped fidgeting and Aevum gazed at him impassively. Calir was beginning to think he might have said the wrong thing and that perhaps this mage had been friends with Tharg, or that he liked the Ice continent, when Aevum finally stirred.</p>
+<p>"Yes. Let us begin."</p>
+
+                <hr>
+                <p style="text-align:center">| <a href="the-dark-mirror-1.html">1</a> | <a href="the-dark-mirror-2.html">2</a> | <a href="the-dark-mirror-3.html">3</a> | <a href="the-dark-mirror-4.html">4</a> | 5 | <a href="the-dark-mirror-6.html">6</a> | <a href="the-dark-mirror-7.html">7</a> |<br><a href="/the-kingdom-of-tharg/a-lost-journey-home-1.html">Previous Chapter</a> | <a href="/the-kingdom-of-tharg/finding-home-1.html">Next Chapter</a>
+                </p>
+            </div>
+        </div>
+<div id="app" class="row">
+    <div class="col-md-6 offset-md-3">
+        <h4>Comments</h4>
+        <ul class="timeline">
+            <li>
+                <form>
+                    <div class="form-group">
+                        <label for="commentInput">All comments are welcome, especially constructive ones!</label>
+                        <textarea v-model="newComment" class="form-control" id="commentInput" rows="3"></textarea>
+                        <button type="button" class="btn btn-primary" v-on:click="submitComment">Submit</button>
+                    </div>
+                </form>
+            </li>
+            <li v-for="comment in comments">
+                <p><b>{{ comment.createdAt }}</b></p>
+                <p>{{ comment.body }}</p>
+            </li>
+        </ul>
+    </div>
+</div>
+    
+<script>
+        loadComments = function() {
+            $.get('/topics/16275216/comments', function(data) {
+                console.log(typeof(data))
+                comments = []
+                for(d of data) {
+                    createdAt = new Date(d.CreatedAt)
+                    comments.push({createdAt: `${createdAt.toLocaleString()}`, body: d.Body})
+                }
+                app.$data.comments = comments
+            })
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                newComment: '',
+                comments: []
+            },
+            methods: {
+                submitComment: function() {
+                console.log(app.newComment)
+                $.post({
+                    url: '/topics/16275216/comments',
+                    data: JSON.stringify({Body: app.newComment}), 
+                    contentType: 'application/json'
+                }, function() {
+                    loadComments()
+                    app.newComment = ''
+                })
+            }
+        }
+    })
+
+   loadComments() 
+</script>
+ 
+    </div>
+    </body>
+</html>

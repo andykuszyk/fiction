@@ -1,0 +1,139 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164357380-1"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-164357380-1');
+</script>
+    <title>A. Kuszyk | The Kingdom Of Tharg - A Lost Journey Home (7/7)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        
+    
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    ul.timeline {
+        list-style-type: none;
+        position: relative;
+    }
+    ul.timeline:before {
+        content: ' ';
+        background: #d4d9df;
+        display: inline-block;
+        position: absolute;
+        left: 29px;
+        width: 2px;
+        height: 100%;
+        z-index: 400;
+    }
+    ul.timeline > li {
+        margin: 20px 0;
+        padding-left: 20px;
+    }
+    ul.timeline > li:before {
+        content: ' ';
+        background: white;
+        display: inline-block;
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid #22c0e8;
+        left: 20px;
+        width: 20px;
+        height: 20px;
+        z-index: 400;
+    }
+</style>
+    
+    </head>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg"><h1>The Kingdom Of Tharg</h1>
+<h2>A Lost Journey Home</h2>
+<h3>Part 7/7
+
+                <hr>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-lg"><p>Tharg stepped up to the edge and into Calir's line of sight. He leant over the edge theatrically and let out a low whistle.</p>
+<p>"Its a long way down boys, a long, cold way down."</p>
+<p>This was met with murmurs of agreement from all around. The hands closed around Calir's arms didn't slacken, but they jostled him slightly, mocking him. Tharg turned slightly to Calir, addressing him.</p>
+<p>"The Dark Mirror, they say, lies at the bottom of this abyss. Its a legend, of course, because we know of none who can confirm it. But, if the legend is true then you will fall for an age before striking it. And, upon striking it, will come into contact with all of the sorcery and wonder of my Kingdom. The Dark Mirror makes everything about our place in the world possible and you, my gallant, fearless hero, have the privilege of meeting her face-to-face."</p>
+<p>This last was greeted with another murmurs of amusement from the small crowd gathered around the hole. Tharg smiled, with less malevolence this time and just a touch of nostalgia.</p>
+<p>"Give her our best..."</p>
+<p>He nodded to the men holding Calir and, before he'd realised the intent of this gesture, Calir found himself being cast bodily into this abyss. As he fell, he let out a cry that was heard throughout the Palace of Tharg. It drew a smile on the faces of Tharg's band and a sick realisation of doom from the remainder of Calir's group. With Calir's death, they were absolutely destitute of hope or salvation and were abandoned to the evil clutches of Tharg and his mercenaries. They would never get home and would have to live forever in this desolate land of ice and misery. Every one of them wept, for themselves more than for Calir.</p>
+
+                <hr>
+                <p style="text-align:center">| <a href="a-lost-journey-home-1.html">1</a> | <a href="a-lost-journey-home-2.html">2</a> | <a href="a-lost-journey-home-3.html">3</a> | <a href="a-lost-journey-home-4.html">4</a> | <a href="a-lost-journey-home-5.html">5</a> | <a href="a-lost-journey-home-6.html">6</a> | 7 |<br><a href="/the-kingdom-of-tharg">Previous Chapter</a> | <a href="/the-kingdom-of-tharg/the-dark-mirror-1.html">Next Chapter</a>
+                </p>
+            </div>
+        </div>
+<div id="app" class="row">
+    <div class="col-md-6 offset-md-3">
+        <h4>Comments</h4>
+        <ul class="timeline">
+            <li>
+                <form>
+                    <div class="form-group">
+                        <label for="commentInput">All comments are welcome, especially constructive ones!</label>
+                        <textarea v-model="newComment" class="form-control" id="commentInput" rows="3"></textarea>
+                        <button type="button" class="btn btn-primary" v-on:click="submitComment">Submit</button>
+                    </div>
+                </form>
+            </li>
+            <li v-for="comment in comments">
+                <p><b>{{ comment.createdAt }}</b></p>
+                <p>{{ comment.body }}</p>
+            </li>
+        </ul>
+    </div>
+</div>
+    
+<script>
+        loadComments = function() {
+            $.get('/topics/16275216/comments', function(data) {
+                console.log(typeof(data))
+                comments = []
+                for(d of data) {
+                    createdAt = new Date(d.CreatedAt)
+                    comments.push({createdAt: `${createdAt.toLocaleString()}`, body: d.Body})
+                }
+                app.$data.comments = comments
+            })
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                newComment: '',
+                comments: []
+            },
+            methods: {
+                submitComment: function() {
+                console.log(app.newComment)
+                $.post({
+                    url: '/topics/16275216/comments',
+                    data: JSON.stringify({Body: app.newComment}), 
+                    contentType: 'application/json'
+                }, function() {
+                    loadComments()
+                    app.newComment = ''
+                })
+            }
+        }
+    })
+
+   loadComments() 
+</script>
+ 
+    </div>
+    </body>
+</html>

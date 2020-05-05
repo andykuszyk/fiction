@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164357380-1"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-164357380-1');
+</script>
+    <title>A. Kuszyk | The Kingdom Of Tharg - The Dark Mirror (4/7)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        
+    
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    ul.timeline {
+        list-style-type: none;
+        position: relative;
+    }
+    ul.timeline:before {
+        content: ' ';
+        background: #d4d9df;
+        display: inline-block;
+        position: absolute;
+        left: 29px;
+        width: 2px;
+        height: 100%;
+        z-index: 400;
+    }
+    ul.timeline > li {
+        margin: 20px 0;
+        padding-left: 20px;
+    }
+    ul.timeline > li:before {
+        content: ' ';
+        background: white;
+        display: inline-block;
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid #22c0e8;
+        left: 20px;
+        width: 20px;
+        height: 20px;
+        z-index: 400;
+    }
+</style>
+    
+    </head>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg"><h1>The Kingdom Of Tharg</h1>
+<h2>The Dark Mirror</h2>
+<h3>Part 4/7
+
+                <hr>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-lg"><p>"I am Aevum, a Dark Mage and seer of the Crystal Night. I would make a poor friend and a worse enemy. May we know one another and remain true to ourselves. That is the best I can offer you."</p>
+<p>"Very well," replied Calir in friendly tone, "may we know one another and find friendship if we can."</p>
+<p>The mage nodded once in assent, which Calir took as a small victory. He smiled and Aevum, for his part, didn't grimace.</p>
+<p>"Now, what's all this business about you expecting me? How could you have been expecting me when there is no way in and, as far as I can see, no way out of this place? Answer me that, friend Aevum."</p>
+<p>"You think of expectation as being the cause before the effect. In this place, where there is no time, sometimes the effect comes before the cause. If you like, your arrival led to my expectation of you and decision to seek you out in advance. The arrow of time can point any way in this place. Forward or backward - it makes no difference here."</p>
+<p>This left Calir feeling even more confused, sat on the floor, and he held his head in his hands.</p>
+<p>"A way out, you said we could escape together. Just tell me about that!"</p>
+<p>"Yes, yes. There is a way, but you will need to learn first."</p>
+<p>"Learn?"</p>
+<p>"Mmm, learn of the dark magic that binds this place, learn some of the dark lore that I possess. Only with this knowledge will you be able to assist me in making a portal."</p>
+
+                <hr>
+                <p style="text-align:center">| <a href="the-dark-mirror-1.html">1</a> | <a href="the-dark-mirror-2.html">2</a> | <a href="the-dark-mirror-3.html">3</a> | 4 | <a href="the-dark-mirror-5.html">5</a> | <a href="the-dark-mirror-6.html">6</a> | <a href="the-dark-mirror-7.html">7</a> |<br><a href="/the-kingdom-of-tharg/a-lost-journey-home-1.html">Previous Chapter</a> | <a href="/the-kingdom-of-tharg/finding-home-1.html">Next Chapter</a>
+                </p>
+            </div>
+        </div>
+<div id="app" class="row">
+    <div class="col-md-6 offset-md-3">
+        <h4>Comments</h4>
+        <ul class="timeline">
+            <li>
+                <form>
+                    <div class="form-group">
+                        <label for="commentInput">All comments are welcome, especially constructive ones!</label>
+                        <textarea v-model="newComment" class="form-control" id="commentInput" rows="3"></textarea>
+                        <button type="button" class="btn btn-primary" v-on:click="submitComment">Submit</button>
+                    </div>
+                </form>
+            </li>
+            <li v-for="comment in comments">
+                <p><b>{{ comment.createdAt }}</b></p>
+                <p>{{ comment.body }}</p>
+            </li>
+        </ul>
+    </div>
+</div>
+    
+<script>
+        loadComments = function() {
+            $.get('/topics/16275216/comments', function(data) {
+                console.log(typeof(data))
+                comments = []
+                for(d of data) {
+                    createdAt = new Date(d.CreatedAt)
+                    comments.push({createdAt: `${createdAt.toLocaleString()}`, body: d.Body})
+                }
+                app.$data.comments = comments
+            })
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                newComment: '',
+                comments: []
+            },
+            methods: {
+                submitComment: function() {
+                console.log(app.newComment)
+                $.post({
+                    url: '/topics/16275216/comments',
+                    data: JSON.stringify({Body: app.newComment}), 
+                    contentType: 'application/json'
+                }, function() {
+                    loadComments()
+                    app.newComment = ''
+                })
+            }
+        }
+    })
+
+   loadComments() 
+</script>
+ 
+    </div>
+    </body>
+</html>

@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164357380-1"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-164357380-1');
+</script>
+    <title>A. Kuszyk | The Kingdom Of Tharg - Finding Home (7/13)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        
+    
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    ul.timeline {
+        list-style-type: none;
+        position: relative;
+    }
+    ul.timeline:before {
+        content: ' ';
+        background: #d4d9df;
+        display: inline-block;
+        position: absolute;
+        left: 29px;
+        width: 2px;
+        height: 100%;
+        z-index: 400;
+    }
+    ul.timeline > li {
+        margin: 20px 0;
+        padding-left: 20px;
+    }
+    ul.timeline > li:before {
+        content: ' ';
+        background: white;
+        display: inline-block;
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid #22c0e8;
+        left: 20px;
+        width: 20px;
+        height: 20px;
+        z-index: 400;
+    }
+</style>
+    
+    </head>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg"><h1>The Kingdom Of Tharg</h1>
+<h2>Finding Home</h2>
+<h3>Part 7/13
+
+                <hr>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-lg"><p>"It is best not to hope or to speculate on the frozen wrecks of yonder year. There might be more than food and less than life hiding in that cabin and we should prepare for anything we might find."</p>
+<p>"A little hard to do, don't you think?"</p>
+<p>Aevum raised an eyebrow.</p>
+<p>"Prepare for anything we might find? Might as well suggest that we measure a never-ending rope or boil a forever frozen pot-"</p>
+<p>"Hush, friend Calir! Let us proceed with caution. There may be danger ahead, even to a mage such as myself. Hush."</p>
+<p>Despite feeling more than a little put out by Aevum's abrupt tone, Calir acquiesced and clasped his belt with cold fingers as they approached the door. The door itself was closed, but at this angle, it would only take a small push for it to swing open with a bang. This made Calir think it was either locked or frozen shut and would certainly be hard for the casual passer-by to open. Aevum approached the door first and pushed gently with his fist around the handle. The door gave easily, almost as if it had been waiting to be opened by a warm-blooded hand all these centuries. It yielded without a squeak or a squeal. Despite clearly having been frozen amidst the violence of the sea centuries ago, this door was as ready to be opened as the day it had been fashioned.</p>
+<p>They stepped in and adjusted to the lack of grey light that filtered in through the rear, grilled window. Inside the low room was a short, rectangular table around which were arranged six chairs. The chairs were turned this way and that as if their occupants had been halfway through the ceremony of standing or sitting at the time of their disappearance. The table itself was covered in plates and bowls, all of which were covered in a thick layer of dust. As Calir acclimatised to the light, he noticed that the chairs were also covered in large quantities of thick, grey dust, as was the floor around the chairs and tables. At first glance, the rest of the room was unremarkable. There was a writing table in front of the window, which was empty and a large trunk in the corner of the room. The fact that it was still in-place suggested that it was fixed to the floor in some capacity.</p>
+<p>"Humph," Calir remarked involuntarily.</p>
+<p>"Yes?"</p>
+<p>"Well, it's odd isn't it?"</p>
+
+                <hr>
+                <p style="text-align:center">| <a href="finding-home-1.html">1</a> | <a href="finding-home-2.html">2</a> | <a href="finding-home-3.html">3</a> | <a href="finding-home-4.html">4</a> | <a href="finding-home-5.html">5</a> | <a href="finding-home-6.html">6</a> | 7 | <a href="finding-home-8.html">8</a> | <a href="finding-home-9.html">9</a> | <a href="finding-home-10.html">10</a> | <a href="finding-home-11.html">11</a> | <a href="finding-home-12.html">12</a> | <a href="finding-home-13.html">13</a> |<br><a href="/the-kingdom-of-tharg/the-dark-mirror-1.html">Previous Chapter</a> | <a href="/the-kingdom-of-tharg/home-time-1.html">Next Chapter</a>
+                </p>
+            </div>
+        </div>
+<div id="app" class="row">
+    <div class="col-md-6 offset-md-3">
+        <h4>Comments</h4>
+        <ul class="timeline">
+            <li>
+                <form>
+                    <div class="form-group">
+                        <label for="commentInput">All comments are welcome, especially constructive ones!</label>
+                        <textarea v-model="newComment" class="form-control" id="commentInput" rows="3"></textarea>
+                        <button type="button" class="btn btn-primary" v-on:click="submitComment">Submit</button>
+                    </div>
+                </form>
+            </li>
+            <li v-for="comment in comments">
+                <p><b>{{ comment.createdAt }}</b></p>
+                <p>{{ comment.body }}</p>
+            </li>
+        </ul>
+    </div>
+</div>
+    
+<script>
+        loadComments = function() {
+            $.get('/topics/16275216/comments', function(data) {
+                console.log(typeof(data))
+                comments = []
+                for(d of data) {
+                    createdAt = new Date(d.CreatedAt)
+                    comments.push({createdAt: `${createdAt.toLocaleString()}`, body: d.Body})
+                }
+                app.$data.comments = comments
+            })
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                newComment: '',
+                comments: []
+            },
+            methods: {
+                submitComment: function() {
+                console.log(app.newComment)
+                $.post({
+                    url: '/topics/16275216/comments',
+                    data: JSON.stringify({Body: app.newComment}), 
+                    contentType: 'application/json'
+                }, function() {
+                    loadComments()
+                    app.newComment = ''
+                })
+            }
+        }
+    })
+
+   loadComments() 
+</script>
+ 
+    </div>
+    </body>
+</html>

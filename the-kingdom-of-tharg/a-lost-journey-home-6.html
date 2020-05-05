@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164357380-1"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-164357380-1');
+</script>
+    <title>A. Kuszyk | The Kingdom Of Tharg - A Lost Journey Home (6/7)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        
+    
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    ul.timeline {
+        list-style-type: none;
+        position: relative;
+    }
+    ul.timeline:before {
+        content: ' ';
+        background: #d4d9df;
+        display: inline-block;
+        position: absolute;
+        left: 29px;
+        width: 2px;
+        height: 100%;
+        z-index: 400;
+    }
+    ul.timeline > li {
+        margin: 20px 0;
+        padding-left: 20px;
+    }
+    ul.timeline > li:before {
+        content: ' ';
+        background: white;
+        display: inline-block;
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid #22c0e8;
+        left: 20px;
+        width: 20px;
+        height: 20px;
+        z-index: 400;
+    }
+</style>
+    
+    </head>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg"><h1>The Kingdom Of Tharg</h1>
+<h2>A Lost Journey Home</h2>
+<h3>Part 6/7
+
+                <hr>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-lg"><p>"Well, sir, we thank you for your, er, welcome to your, er, mighty Ice Kingdom."</p>
+<p>Tharg inclined his head in a mock bow and gestured for Calir to continue.</p>
+<p>"But we respectfully decline your invitation to join your, er, band of followers. Instead, we plead for your mercy and ask that you assist us in our journey home - we're just trying to get back to Domum continent. To the warm and pleasant lands of our birth; to escape this icy desert and desolate palace and, er-"</p>
+<p>Calir paused, catching himself finding himself unsure how to convince King Tharg.</p>
+<p>"We just want to get home, your- your majesty," he finished awkwardly.</p>
+<p>A silence descended amongst all those in the room. The men from Domum looked cautiously from Calir to Tharg and back again, hoping against hope for a swift departure from this Ice Kingdom and a speedy return to their home land. Tharg's mocking smile persisted as he slowly turned on the spot, taking in the crowd of Calir's people spread out around the hall, as well as the gently chuckling faces lining the mezzanine above. As he closed his pirouette of judgement more and more laughter broke out amongst the mercenaries watching the scene until, as Tharg faced Calir again, he was chuckling himself as well. The gentle laughter petered out. Tharg's expression soured as his amusement turned to contempt, which morphed into fury. He glared at Calir.</p>
+<p>"Join us or be meat for our table!" he shrieked, "And you!" he pointed a blue finger at Calir, "You! We shall cast this one into the Dark Mirror so that he can forever ponder the fate of this friends!"</p>
+<p>This last exclamation was met with rapturous laughter, approval and applause from the mezzanine. Two or three of Tharg's men tramped down the stairwell and surrounded a stunned Calir, lifting him bodily from his feet. They dragged him up the stairs and out of sight.</p>
+<p><hr></p>
+<p>Suspended over the circular abyss, rimmed with irregular shaped blocks of stone, Calir felt a new level of terror. The men holding him on either side had ice-cold grasps and, this close, he could see frozen globules of saliva and blood in their beards. They smelled of death. The circular opening itself was a dark void out of which blew a continuous stream of cold air that seemed quite at odds with the immediate surroundings, which were still. As he gazed down into the pit, Calir tried and failed to see any features below. It was dark as night and hollow as his remaining hope.</p>
+
+                <hr>
+                <p style="text-align:center">| <a href="a-lost-journey-home-1.html">1</a> | <a href="a-lost-journey-home-2.html">2</a> | <a href="a-lost-journey-home-3.html">3</a> | <a href="a-lost-journey-home-4.html">4</a> | <a href="a-lost-journey-home-5.html">5</a> | 6 | <a href="a-lost-journey-home-7.html">7</a> |<br><a href="/the-kingdom-of-tharg">Previous Chapter</a> | <a href="/the-kingdom-of-tharg/the-dark-mirror-1.html">Next Chapter</a>
+                </p>
+            </div>
+        </div>
+<div id="app" class="row">
+    <div class="col-md-6 offset-md-3">
+        <h4>Comments</h4>
+        <ul class="timeline">
+            <li>
+                <form>
+                    <div class="form-group">
+                        <label for="commentInput">All comments are welcome, especially constructive ones!</label>
+                        <textarea v-model="newComment" class="form-control" id="commentInput" rows="3"></textarea>
+                        <button type="button" class="btn btn-primary" v-on:click="submitComment">Submit</button>
+                    </div>
+                </form>
+            </li>
+            <li v-for="comment in comments">
+                <p><b>{{ comment.createdAt }}</b></p>
+                <p>{{ comment.body }}</p>
+            </li>
+        </ul>
+    </div>
+</div>
+    
+<script>
+        loadComments = function() {
+            $.get('/topics/16275216/comments', function(data) {
+                console.log(typeof(data))
+                comments = []
+                for(d of data) {
+                    createdAt = new Date(d.CreatedAt)
+                    comments.push({createdAt: `${createdAt.toLocaleString()}`, body: d.Body})
+                }
+                app.$data.comments = comments
+            })
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                newComment: '',
+                comments: []
+            },
+            methods: {
+                submitComment: function() {
+                console.log(app.newComment)
+                $.post({
+                    url: '/topics/16275216/comments',
+                    data: JSON.stringify({Body: app.newComment}), 
+                    contentType: 'application/json'
+                }, function() {
+                    loadComments()
+                    app.newComment = ''
+                })
+            }
+        }
+    })
+
+   loadComments() 
+</script>
+ 
+    </div>
+    </body>
+</html>

@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164357380-1"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-164357380-1');
+</script>
+    <title>A. Kuszyk | The Kingdom Of Tharg - Home Time (7/10)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        
+    
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    ul.timeline {
+        list-style-type: none;
+        position: relative;
+    }
+    ul.timeline:before {
+        content: ' ';
+        background: #d4d9df;
+        display: inline-block;
+        position: absolute;
+        left: 29px;
+        width: 2px;
+        height: 100%;
+        z-index: 400;
+    }
+    ul.timeline > li {
+        margin: 20px 0;
+        padding-left: 20px;
+    }
+    ul.timeline > li:before {
+        content: ' ';
+        background: white;
+        display: inline-block;
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid #22c0e8;
+        left: 20px;
+        width: 20px;
+        height: 20px;
+        z-index: 400;
+    }
+</style>
+    
+    </head>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg"><h1>The Kingdom Of Tharg</h1>
+<h2>Home Time</h2>
+<h3>Part 7/10
+
+                <hr>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-lg"><p>"And you're sure this is the same day as earlier? This isn't tomorrow?"</p>
+<p>"When Mages meditate, we can still see the world around us. It hasn't got dark, the Sun hasn't set. This is undoubtedly the same day."</p>
+<p>A thought struck Calir then and he finished his water.</p>
+<p>"Let's go to the bakers."</p>
+<p>"You're not hungry again, friend Calir?"</p>
+<p>"No, but I want to check something. Come, my good man, let us investigate."</p>
+<p><hr></p>
+<p>Upon entering Panem's Bakehouse the first thing Calir noticed was the lack of customers. His stomach flipped with a nervous feeling of horror. But where had they gone, those frozen statues waiting in line to buy bread? The baker was behind the counter, with his back to them, frozen in the act of cutting or slicing something. The rack of cooling bread they had seen earlier was empty, but the counter was piled with fresh loaves. Calir walked over to them cautiously and felt them. Whereas the loaves they had chosen from earlier had been soft and warm, these were cool and crusty. Calir turned back to Aevum, who was waiting in the doorway, with his face contorted in confusion and fear.</p>
+<p>"What's happening here?"</p>
+<p>"I believe I know the answer, friend Calir. Surely you have guessed it by now?"</p>
+
+                <hr>
+                <p style="text-align:center">| <a href="home-time-1.html">1</a> | <a href="home-time-2.html">2</a> | <a href="home-time-3.html">3</a> | <a href="home-time-4.html">4</a> | <a href="home-time-5.html">5</a> | <a href="home-time-6.html">6</a> | 7 | <a href="home-time-8.html">8</a> | <a href="home-time-9.html">9</a> | <a href="home-time-10.html">10</a> |<br><a href="/the-kingdom-of-tharg/finding-home-1.html">Previous Chapter</a> | <a href="/the-kingdom-of-tharg/the-call-of-the-mirror-1.html">Next Chapter</a>
+                </p>
+            </div>
+        </div>
+<div id="app" class="row">
+    <div class="col-md-6 offset-md-3">
+        <h4>Comments</h4>
+        <ul class="timeline">
+            <li>
+                <form>
+                    <div class="form-group">
+                        <label for="commentInput">All comments are welcome, especially constructive ones!</label>
+                        <textarea v-model="newComment" class="form-control" id="commentInput" rows="3"></textarea>
+                        <button type="button" class="btn btn-primary" v-on:click="submitComment">Submit</button>
+                    </div>
+                </form>
+            </li>
+            <li v-for="comment in comments">
+                <p><b>{{ comment.createdAt }}</b></p>
+                <p>{{ comment.body }}</p>
+            </li>
+        </ul>
+    </div>
+</div>
+    
+<script>
+        loadComments = function() {
+            $.get('/topics/16275216/comments', function(data) {
+                console.log(typeof(data))
+                comments = []
+                for(d of data) {
+                    createdAt = new Date(d.CreatedAt)
+                    comments.push({createdAt: `${createdAt.toLocaleString()}`, body: d.Body})
+                }
+                app.$data.comments = comments
+            })
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                newComment: '',
+                comments: []
+            },
+            methods: {
+                submitComment: function() {
+                console.log(app.newComment)
+                $.post({
+                    url: '/topics/16275216/comments',
+                    data: JSON.stringify({Body: app.newComment}), 
+                    contentType: 'application/json'
+                }, function() {
+                    loadComments()
+                    app.newComment = ''
+                })
+            }
+        }
+    })
+
+   loadComments() 
+</script>
+ 
+    </div>
+    </body>
+</html>

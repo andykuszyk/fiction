@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164357380-1"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-164357380-1');
+</script>
+    <title>A. Kuszyk | The Kingdom Of Tharg - Finding Home (11/13)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        
+    
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    ul.timeline {
+        list-style-type: none;
+        position: relative;
+    }
+    ul.timeline:before {
+        content: ' ';
+        background: #d4d9df;
+        display: inline-block;
+        position: absolute;
+        left: 29px;
+        width: 2px;
+        height: 100%;
+        z-index: 400;
+    }
+    ul.timeline > li {
+        margin: 20px 0;
+        padding-left: 20px;
+    }
+    ul.timeline > li:before {
+        content: ' ';
+        background: white;
+        display: inline-block;
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid #22c0e8;
+        left: 20px;
+        width: 20px;
+        height: 20px;
+        z-index: 400;
+    }
+</style>
+    
+    </head>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg"><h1>The Kingdom Of Tharg</h1>
+<h2>Finding Home</h2>
+<h3>Part 11/13
+
+                <hr>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-lg"><p>"Why, yes," replied the mage, "those are the words I just spoke to you."</p>
+<p>The poor man was even wearier than he had thought.</p>
+<p>"No, not that," Calir waved his hand dismissively, "that!"</p>
+<p>With this, he pointed straight ahead and cocked his head. Aevum listened. Right on the edge of his sense of sound was a gentle lapping sound. Come to think of it, there was a faint odour of salt in the air as well.</p>
+<p>"Its the sea!"</p>
+<p>His fatigue forgotten, Calir sprang forward as if he'd just had a good night's sleep and a hearty meal. He ran across the ice with a dull thump that became more of a wet slap as he began to stumble through puddles and pools. Within fifty metres he came across a beach of ice, with gentle waves washing against it in a warm caress. Ahead of him was a calm sea and a mild breeze; clear skies and a bright sun. It was as if they had suddenly walked out from underneath a freezing cloud into a warm, tropical landscape of humid airs and mild waters. And then Calir saw it. Out beyond the tranquil waves was a shoreline stretching right across the horizon. A band of browns and greens with a haze of warm cloud hovering over it. No blues or whites, no ice of glacier. Just home beyond home beyond home. Domum Continent was there, not more than five or ten miles from the edge of the ice shelf upon which they finally stood.</p>
+<p>Aevum caught up with him and stood beside him, gazing out to sea.</p>
+<p>"Ah. So we have made it after all. I am thankful, we will be safe now."</p>
+<p>Calir was looking crestfallen.</p>
+<p>"But friend Calir, whatever is the matter? We have succeeded in our journey, have we not? You are in sight of your home land, you should be celebrating!"</p>
+
+                <hr>
+                <p style="text-align:center">| <a href="finding-home-1.html">1</a> | <a href="finding-home-2.html">2</a> | <a href="finding-home-3.html">3</a> | <a href="finding-home-4.html">4</a> | <a href="finding-home-5.html">5</a> | <a href="finding-home-6.html">6</a> | <a href="finding-home-7.html">7</a> | <a href="finding-home-8.html">8</a> | <a href="finding-home-9.html">9</a> | <a href="finding-home-10.html">10</a> | 11 | <a href="finding-home-12.html">12</a> | <a href="finding-home-13.html">13</a> |<br><a href="/the-kingdom-of-tharg/the-dark-mirror-1.html">Previous Chapter</a> | <a href="/the-kingdom-of-tharg/home-time-1.html">Next Chapter</a>
+                </p>
+            </div>
+        </div>
+<div id="app" class="row">
+    <div class="col-md-6 offset-md-3">
+        <h4>Comments</h4>
+        <ul class="timeline">
+            <li>
+                <form>
+                    <div class="form-group">
+                        <label for="commentInput">All comments are welcome, especially constructive ones!</label>
+                        <textarea v-model="newComment" class="form-control" id="commentInput" rows="3"></textarea>
+                        <button type="button" class="btn btn-primary" v-on:click="submitComment">Submit</button>
+                    </div>
+                </form>
+            </li>
+            <li v-for="comment in comments">
+                <p><b>{{ comment.createdAt }}</b></p>
+                <p>{{ comment.body }}</p>
+            </li>
+        </ul>
+    </div>
+</div>
+    
+<script>
+        loadComments = function() {
+            $.get('/topics/16275216/comments', function(data) {
+                console.log(typeof(data))
+                comments = []
+                for(d of data) {
+                    createdAt = new Date(d.CreatedAt)
+                    comments.push({createdAt: `${createdAt.toLocaleString()}`, body: d.Body})
+                }
+                app.$data.comments = comments
+            })
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                newComment: '',
+                comments: []
+            },
+            methods: {
+                submitComment: function() {
+                console.log(app.newComment)
+                $.post({
+                    url: '/topics/16275216/comments',
+                    data: JSON.stringify({Body: app.newComment}), 
+                    contentType: 'application/json'
+                }, function() {
+                    loadComments()
+                    app.newComment = ''
+                })
+            }
+        }
+    })
+
+   loadComments() 
+</script>
+ 
+    </div>
+    </body>
+</html>

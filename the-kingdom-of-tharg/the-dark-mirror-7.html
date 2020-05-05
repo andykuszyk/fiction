@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164357380-1"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-164357380-1');
+</script>
+    <title>A. Kuszyk | The Kingdom Of Tharg - The Dark Mirror (7/7)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        
+    
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    ul.timeline {
+        list-style-type: none;
+        position: relative;
+    }
+    ul.timeline:before {
+        content: ' ';
+        background: #d4d9df;
+        display: inline-block;
+        position: absolute;
+        left: 29px;
+        width: 2px;
+        height: 100%;
+        z-index: 400;
+    }
+    ul.timeline > li {
+        margin: 20px 0;
+        padding-left: 20px;
+    }
+    ul.timeline > li:before {
+        content: ' ';
+        background: white;
+        display: inline-block;
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid #22c0e8;
+        left: 20px;
+        width: 20px;
+        height: 20px;
+        z-index: 400;
+    }
+</style>
+    
+    </head>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg"><h1>The Kingdom Of Tharg</h1>
+<h2>The Dark Mirror</h2>
+<h3>Part 7/7
+
+                <hr>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-lg"><p>With this, he quickly brought the knife to bear against Calir's slippery palm and, making Calir jump with its suddenness, drew it across leaving a line of dark red behind. Aevum mimed clenching his fist and waving it over the ground. As soon as Calir realised what he meant, he copied the gesture until a few drops of his blood dripped from his hand to land in a scatter-gun pattern on the floor. Almost immediately the howling air slackened, the temperature rose slightly and a somewhat more relaxed voice filled the air.</p>
+<p>"Mmmm, I accept the sacrifice. When would you bid me take you?"</p>
+<p>Aevum looked across at Calir and raised an eyebrow.</p>
+<p>"Home! Back home please your, er, shininess," Aevum shot Calir a questioning look, who shrugged helplessly. "Domum Continent please, or thereabouts."</p>
+<p>The air continued to calm, the temperature continued to rise, and the voice became almost maternal.</p>
+<p>"Indeed, but when child?"</p>
+<p>This time, it was Calir's turn to looking questioningly at Aevum. He still didn't really understand all this timelessness.</p>
+<p>"Before my friends and I were captured I suppose, before we were caught by Tharg!"</p>
+<p>"Indeed..."</p>
+<p>The breeze slowed to a stop and the temperature returned to normal. The room was suddenly calm and still, with only the gentle glow of the walls remaining steady. Except that it wasn't remaining steady, it was diminishing almost imperceptibly. Dimmer and dimmer, as if it was lulling them off to sleep. Come to think of it, Calir did feel tired - for the first time since he could remember. His eyes were heavy and his limbs leaden. He'd just have a lay down on the floor, which didn't seem all that cold any more. It was getting dark now. He'd just have a nap and then they'd be on their way. These were his last thoughts within the Dark Mirror.</p>
+
+                <hr>
+                <p style="text-align:center">| <a href="the-dark-mirror-1.html">1</a> | <a href="the-dark-mirror-2.html">2</a> | <a href="the-dark-mirror-3.html">3</a> | <a href="the-dark-mirror-4.html">4</a> | <a href="the-dark-mirror-5.html">5</a> | <a href="the-dark-mirror-6.html">6</a> | 7 |<br><a href="/the-kingdom-of-tharg/a-lost-journey-home-1.html">Previous Chapter</a> | <a href="/the-kingdom-of-tharg/finding-home-1.html">Next Chapter</a>
+                </p>
+            </div>
+        </div>
+<div id="app" class="row">
+    <div class="col-md-6 offset-md-3">
+        <h4>Comments</h4>
+        <ul class="timeline">
+            <li>
+                <form>
+                    <div class="form-group">
+                        <label for="commentInput">All comments are welcome, especially constructive ones!</label>
+                        <textarea v-model="newComment" class="form-control" id="commentInput" rows="3"></textarea>
+                        <button type="button" class="btn btn-primary" v-on:click="submitComment">Submit</button>
+                    </div>
+                </form>
+            </li>
+            <li v-for="comment in comments">
+                <p><b>{{ comment.createdAt }}</b></p>
+                <p>{{ comment.body }}</p>
+            </li>
+        </ul>
+    </div>
+</div>
+    
+<script>
+        loadComments = function() {
+            $.get('/topics/16275216/comments', function(data) {
+                console.log(typeof(data))
+                comments = []
+                for(d of data) {
+                    createdAt = new Date(d.CreatedAt)
+                    comments.push({createdAt: `${createdAt.toLocaleString()}`, body: d.Body})
+                }
+                app.$data.comments = comments
+            })
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                newComment: '',
+                comments: []
+            },
+            methods: {
+                submitComment: function() {
+                console.log(app.newComment)
+                $.post({
+                    url: '/topics/16275216/comments',
+                    data: JSON.stringify({Body: app.newComment}), 
+                    contentType: 'application/json'
+                }, function() {
+                    loadComments()
+                    app.newComment = ''
+                })
+            }
+        }
+    })
+
+   loadComments() 
+</script>
+ 
+    </div>
+    </body>
+</html>

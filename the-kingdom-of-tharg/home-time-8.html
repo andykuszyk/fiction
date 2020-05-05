@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164357380-1"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-164357380-1');
+</script>
+    <title>A. Kuszyk | The Kingdom Of Tharg - Home Time (8/10)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        
+    
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    ul.timeline {
+        list-style-type: none;
+        position: relative;
+    }
+    ul.timeline:before {
+        content: ' ';
+        background: #d4d9df;
+        display: inline-block;
+        position: absolute;
+        left: 29px;
+        width: 2px;
+        height: 100%;
+        z-index: 400;
+    }
+    ul.timeline > li {
+        margin: 20px 0;
+        padding-left: 20px;
+    }
+    ul.timeline > li:before {
+        content: ' ';
+        background: white;
+        display: inline-block;
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid #22c0e8;
+        left: 20px;
+        width: 20px;
+        height: 20px;
+        z-index: 400;
+    }
+</style>
+    
+    </head>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg"><h1>The Kingdom Of Tharg</h1>
+<h2>Home Time</h2>
+<h3>Part 8/10
+
+                <hr>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-lg"><p>Calir paused for thought and looked back to the baker, puzzling over their predicament.</p>
+<p>"Time isn't frozen for them, as we thought this morning. It just...slow. Its running slowly for them, for some reason. Maybe The Dark Mirror? I don't know!"</p>
+<p>"And the Sun, what of the Sun?"</p>
+<p>"I don't know...can she affect the Sun in the sky as well? What kind of magical trap are we caught in?"</p>
+<p>The mage smiled grimly and re-arranged his cloak.</p>
+<p>"It is not them, but us, friend Calir," he said as gently as he could. "Time is not slowed for the Sun and the stars and the people of this place, but it is accelerated for us. A day for us is an hour for them. What we see as a minute, they see as an instant. It is us who are trapped, but not frozen - we are caught in the eddies of time rushing past the smooth, calm lake of this place. And we cannot get out."</p>
+<p>"Argh!" Calir exclaimed in anguish, "you mean to say that we are rushing around like sparks from a flame and that we shall live and die in the time it takes these people to see a year of seasons!"</p>
+<p>"I'm afraid so, friend Calir, I'm afraid so."</p>
+<p>"Then her punishment is complete and we have not escaped her grasp after all!"</p>
+<p>"Indeed, a bargain made with The Dark Mirror is a bargain to beware. She kept to her word and we did not say that we wanted time to be restored to its ordinary pace."</p>
+
+                <hr>
+                <p style="text-align:center">| <a href="home-time-1.html">1</a> | <a href="home-time-2.html">2</a> | <a href="home-time-3.html">3</a> | <a href="home-time-4.html">4</a> | <a href="home-time-5.html">5</a> | <a href="home-time-6.html">6</a> | <a href="home-time-7.html">7</a> | 8 | <a href="home-time-9.html">9</a> | <a href="home-time-10.html">10</a> |<br><a href="/the-kingdom-of-tharg/finding-home-1.html">Previous Chapter</a> | <a href="/the-kingdom-of-tharg/the-call-of-the-mirror-1.html">Next Chapter</a>
+                </p>
+            </div>
+        </div>
+<div id="app" class="row">
+    <div class="col-md-6 offset-md-3">
+        <h4>Comments</h4>
+        <ul class="timeline">
+            <li>
+                <form>
+                    <div class="form-group">
+                        <label for="commentInput">All comments are welcome, especially constructive ones!</label>
+                        <textarea v-model="newComment" class="form-control" id="commentInput" rows="3"></textarea>
+                        <button type="button" class="btn btn-primary" v-on:click="submitComment">Submit</button>
+                    </div>
+                </form>
+            </li>
+            <li v-for="comment in comments">
+                <p><b>{{ comment.createdAt }}</b></p>
+                <p>{{ comment.body }}</p>
+            </li>
+        </ul>
+    </div>
+</div>
+    
+<script>
+        loadComments = function() {
+            $.get('/topics/16275216/comments', function(data) {
+                console.log(typeof(data))
+                comments = []
+                for(d of data) {
+                    createdAt = new Date(d.CreatedAt)
+                    comments.push({createdAt: `${createdAt.toLocaleString()}`, body: d.Body})
+                }
+                app.$data.comments = comments
+            })
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                newComment: '',
+                comments: []
+            },
+            methods: {
+                submitComment: function() {
+                console.log(app.newComment)
+                $.post({
+                    url: '/topics/16275216/comments',
+                    data: JSON.stringify({Body: app.newComment}), 
+                    contentType: 'application/json'
+                }, function() {
+                    loadComments()
+                    app.newComment = ''
+                })
+            }
+        }
+    })
+
+   loadComments() 
+</script>
+ 
+    </div>
+    </body>
+</html>
