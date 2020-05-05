@@ -1,5 +1,6 @@
 import os
 import re
+import shutil
 
 
 PARAGRAPHS_PER_PART = 10
