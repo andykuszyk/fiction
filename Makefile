@@ -12,7 +12,7 @@ deploy:
 
 generate-the-kingdom-of-tharg:
 	rm -rf the-kingdom-of-tharg/
-	python3 -m generator.generator the-kingdom-of-tharg.html
+	python3 -m generator.generator the-kingdom-of-tharg.html 16275216
 
 test:
 	python3 -m generator.tests.parsing

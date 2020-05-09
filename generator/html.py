@@ -125,11 +125,11 @@ def comments_markup():
     '''
 
 
-def comments_js():
+def comments_js(project_id):
     return '''
 <script>
         loadComments = function() {
-            $.get('/topics/16275216/comments', function(data) {
+            $.get('/topics/'''+project_id+'''/comments', function(data) {
                 console.log(typeof(data))
                 comments = []
                 for(d of data) {
@@ -150,7 +150,7 @@ def comments_js():
                 submitComment: function() {
                 console.log(app.newComment)
                 $.post({
-                    url: '/topics/16275216/comments',
+                    url: '/topics/'''+project_id+'''/comments',
                     data: JSON.stringify({Body: app.newComment}), 
                     contentType: 'application/json'
                 }, function() {
@@ -176,7 +176,7 @@ def build_chapter_breadcrumb(chapter, part_index):
     return breadcrumb
 
 
-def write_chapters(title, dirname, chapters):
+def write_chapters(title, dirname, chapters, project_id):
     for i in range(0, len(chapters)):
         chapter = chapters[i]
         previous_link = '/{}'.format(dirname)
@@ -232,7 +232,7 @@ def write_chapters(title, dirname, chapters):
             </div>
         </div>''')
                 f.write(comments_markup())
-                f.write(comments_js())
+                f.write(comments_js(project_id))
                 f.write(''' 
     </div>
     </body>
