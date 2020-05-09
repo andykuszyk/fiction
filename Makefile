@@ -14,6 +14,10 @@ generate-the-kingdom-of-tharg:
 	rm -rf the-kingdom-of-tharg/
 	python3 -m generator.generator the-kingdom-of-tharg.html 16275216
 
+generate-skylon-tower:
+	rm -rf skylon-tower/
+	python3 -m generator.generator skylon-tower.html 18655331
+
 test:
 	python3 -m generator.tests.parsing
 

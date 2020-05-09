@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164357380-1"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-164357380-1');
+</script>
+    <title>A. Kuszyk | Skylon Tower - Flower Petal (2/8)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        
+    
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    ul.timeline {
+        list-style-type: none;
+        position: relative;
+    }
+    ul.timeline:before {
+        content: ' ';
+        background: #d4d9df;
+        display: inline-block;
+        position: absolute;
+        left: 29px;
+        width: 2px;
+        height: 100%;
+        z-index: 400;
+    }
+    ul.timeline > li {
+        margin: 20px 0;
+        padding-left: 20px;
+    }
+    ul.timeline > li:before {
+        content: ' ';
+        background: white;
+        display: inline-block;
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid #22c0e8;
+        left: 20px;
+        width: 20px;
+        height: 20px;
+        z-index: 400;
+    }
+</style>
+    
+    </head>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg"><h1>Skylon Tower</h1>
+<h2>Flower Petal</h2>
+<h3>Part 2/8
+
+                <hr>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-lg"><p>The fucker was goading me, but I needed him to talk. Still, nothing wrong with a little intimidation.</p>
+<p>"Yeung Fo, that's who's asking. You know him?"</p>
+<p>The cocky grin on his face froze slightly and he nodded.</p>
+<p>"Good. So tell me when you last saw Petal, or this Cream pie might turn sour."</p>
+<p>Nice Bertram, nice. I always had a flair for the poetic.</p>
+<p>It turns out this kid was busy in the sack with Fo's little girl, which explains why he nearly peed his pants when I mentioned daddy's name. Still he told me where and when he saw Flower. Two nights ago in the Shey Wang district. Not exactly your top dollar, but not a dive either. He gave me the name of the hotel and asked me not to tell the boss. I smiled, but made no promises. Let the little fucker stew in his own sordid guilt.</p>
+<p><hr></p>
+<p>It cost me 60 Yen to bribe the bell boy. That's 60 Yen I'll never see again. He showed Flower and her little boyfriend up to the room, but the booking wasn't in his name. Wasn't in hers either. Turns out there's a third wheel. A certain Love-lips Goodtime. Jeez. Is that a real name? I don't even know any more. These Korks seem to think that making up nonsense names in Standard is cute these days. Maybe they think it puts the rest of us down, but I think its just plain weird. Still. Love-lips. She must be an upmarket escort, the sort that only the daughter of someone like Fo could afford. That's probably why that boy was wetting his pants for her. She could bring company to the party.</p>
+<p>Twenty more Yen and the bell boy talked. Gave me her call card. I called her. Voicemail. I called again, but traced it this time. Sometimes the tricks I learnt in the corps sure do help - these Korks think they got us all, but old Bertram Yang's still alive and kicking and his tricks still work.</p>
+<p>Anyway, like I said. Traced the call to its destination. Looked like an apartment further uptown. Thought I'd pay her a visit.</p>
+
+                <hr>
+                <p style="text-align:center">| <a href="flower-petal-1.html">1</a> | 2 | <a href="flower-petal-3.html">3</a> | <a href="flower-petal-4.html">4</a> | <a href="flower-petal-5.html">5</a> | <a href="flower-petal-6.html">6</a> | <a href="flower-petal-7.html">7</a> | <a href="flower-petal-8.html">8</a> |<br><a href="/skylon-tower">Previous Chapter</a> | <a href="/skylon-tower/bertram-1.html">Next Chapter</a>
+                </p>
+            </div>
+        </div>
+<div id="app" class="row">
+    <div class="col-md-6 offset-md-3">
+        <h4>Comments</h4>
+        <ul class="timeline">
+            <li>
+                <form>
+                    <div class="form-group">
+                        <label for="commentInput">All comments are welcome, especially constructive ones!</label>
+                        <textarea v-model="newComment" class="form-control" id="commentInput" rows="3"></textarea>
+                        <button type="button" class="btn btn-primary" v-on:click="submitComment">Submit</button>
+                    </div>
+                </form>
+            </li>
+            <li v-for="comment in comments">
+                <p><b>{{ comment.createdAt }}</b></p>
+                <p>{{ comment.body }}</p>
+            </li>
+        </ul>
+    </div>
+</div>
+    
+<script>
+        loadComments = function() {
+            $.get('/topics/18655331/comments', function(data) {
+                console.log(typeof(data))
+                comments = []
+                for(d of data) {
+                    createdAt = new Date(d.CreatedAt)
+                    comments.push({createdAt: `${createdAt.toLocaleString()}`, body: d.Body})
+                }
+                app.$data.comments = comments
+            })
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                newComment: '',
+                comments: []
+            },
+            methods: {
+                submitComment: function() {
+                console.log(app.newComment)
+                $.post({
+                    url: '/topics/18655331/comments',
+                    data: JSON.stringify({Body: app.newComment}), 
+                    contentType: 'application/json'
+                }, function() {
+                    loadComments()
+                    app.newComment = ''
+                })
+            }
+        }
+    })
+
+   loadComments() 
+</script>
+ 
+    </div>
+    </body>
+</html>
