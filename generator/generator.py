@@ -14,5 +14,8 @@ if __name__ == '__main__':
     lines = parsing.read_lines(filename)
     chapters = parsing.build_chapters(lines)
 
-    html.write_index(dirname, chapters, title, filename)
-    html.write_chapters(title, dirname, chapters, project_id, mode)
+    if mode == '' or mode == 'long':
+        html.write_index(dirname, chapters, title, filename)
+        html.write_chapters(title, dirname, chapters, project_id)
+    elif mode == 'short':
+        html.write_short(title, dirname, chapters, filename, project_id)

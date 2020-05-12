@@ -7,6 +7,25 @@ def read_template(name):
         return f.read()
 
 
+def write_short(title, dirname, chapters, filename, project_id):
+    short_html = read_template('chapter')
+    short_html = short_html.replace('%TITLE%', title)
+    heading = '<h1>{}</h1>\n{}'.format(title, download_links(parsing.downloads(filename, dirname)))
+    short_html = short_html.replace('%HEADING%', heading)
+    lines = ''
+    for chapter in chapters:
+        lines += '<h2>{}</h2>\n'.format(chapter['title'])
+        for line in chapter['lines']:
+            lines += clean_line(line)
+        lines += '<hr>'
+    short_html = short_html.replace('%LINES%', lines)
+    short_html = short_html.replace('%BREADCRUMB%', '')
+    short_html = short_html.replace('%CHAPTER_LINKS%', '')
+    short_html = short_html.replace('%PROJECT_ID%', project_id)
+    with open(os.path.join(dirname, 'index.html'), 'w') as f:
+        f.write(short_html)
+
+
 def write_index(dirname, chapters, title, filename):
     print('Found {} chapters'.format(len(chapters)))
     index_html = read_template("index")
@@ -39,7 +58,7 @@ def build_chapter_breadcrumb(chapter, part_index):
     return breadcrumb
 
 
-def write_chapters(title, dirname, chapters, project_id, mode):
+def write_chapters(title, dirname, chapters, project_id):
     for i in range(0, len(chapters)):
         chapter = chapters[i]
         previous_link = '/{}'.format(dirname)
@@ -66,8 +85,8 @@ def write_chapters(title, dirname, chapters, project_id, mode):
                     lines += clean_line(line)
             chapter_html = chapter_html.replace('%LINES%', lines)
             chapter_html = chapter_html.replace('%BREADCRUMB%', build_chapter_breadcrumb(chapter, part_index))
-            chapter_html = chapter_html.replace('%PREVIOUS_LINK%', previous_link)
-            chapter_html = chapter_html.replace('%NEXT_LINK%', next_link)
+            chapter_links = '<a href="{}">Previous Chapter</a> | <a href="{}">Next Chapter</a>'.format(previous_link, next_link)
+            chapter_html = chapter_html.replace('%CHAPTER_LINKS%', chapter_links)
             chapter_html = chapter_html.replace('%PROJECT_ID%', project_id)
 
             with open(os.path.join(dirname, '{}-{}.html'.format(chapter['id'], part_number)), 'w') as f:
