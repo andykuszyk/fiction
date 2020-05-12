@@ -1,94 +1,23 @@
 import os
 from . import parsing
 
+
+def read_template(name):
+    with open('./generator/templates/{}.html'.format(name), 'r') as f:
+        return f.read()
+
+
 def write_index(dirname, chapters, title, filename):
     print('Found {} chapters'.format(len(chapters)))
+    index_html = read_template("index")
+    index_html = index_html.replace('%TITLE%', title)
+    chapter_links = ''
+    for chapter in chapters:
+        chapter_links += '<a href="/{}/{}-1.html"><h3><li>{}</li></h3></a>\n'.format(dirname, chapter['id'], chapter['title'])
+    index_html = index_html.replace('%CHAPTER_LINKS%', chapter_links)
+    index_html = index_html.replace('%DOWNLOAD_LINKS%', download_links(parsing.downloads(filename, dirname)))
     with open(os.path.join(dirname, 'index.html'), 'w') as f:
-        f.write('''
-    <!doctype html>
-    <html lang="en">
-        <head>''')
-        f.write(google_analytics())
-        f.write('<title>A. Kuszyk | {}</title>'.format(title))
-        f.write(bootstrap())
-        f.write('''
-         </head>
-        <body>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg">''')
-        f.write('<h1>{}</h1>\n'.format(title))
-        f.write('''
-                    <h2>Chapters</h2>
-                    <hr>
-                </div>
-                <div class="col-sm"></div>
-            </div>
-            <div class="row">
-                <div class="col-sm"></div>
-                <div class="col-lg">
-                    <ol>''')
-        for chapter in chapters:
-            f.write('<a href="/{}/{}-1.html"><h3><li>{}</li></h3></a>\n'.format(dirname, chapter['id'], chapter['title']))
-        f.write('''
-                    </ol>
-                </div>
-                <div class="col-sm"></div>
-            </div>
-            <div class="row">
-                <div class="col-lg">
-                    <h2>Downloads</h2>
-                    <hr>
-                </div>
-                <div class="col-sm"></div>
-            </div>
-            <div class="row">
-                <div class="col-sm"></div>
-                <div class="col-lg">''')
-        f.write(download_links(parsing.downloads(filename, dirname)))
-        f.write('''
-                </div>
-            </div>
-        </div>
-        </body>
-    </html>''')
-
-
-def timeline_css():
-    return '''
-<style>
-    ul.timeline {
-        list-style-type: none;
-        position: relative;
-    }
-    ul.timeline:before {
-        content: ' ';
-        background: #d4d9df;
-        display: inline-block;
-        position: absolute;
-        left: 29px;
-        width: 2px;
-        height: 100%;
-        z-index: 400;
-    }
-    ul.timeline > li {
-        margin: 20px 0;
-        padding-left: 20px;
-    }
-    ul.timeline > li:before {
-        content: ' ';
-        background: white;
-        display: inline-block;
-        position: absolute;
-        border-radius: 50%;
-        border: 3px solid #22c0e8;
-        left: 20px;
-        width: 20px;
-        height: 20px;
-        z-index: 400;
-    }
-</style>
-    '''
+        f.write(index_html)
 
 
 def clean_line(line):
@@ -98,72 +27,6 @@ def clean_line(line):
         .replace('’', "'")
         .replace('*', '<hr>')
     )
-
-
-def comments_markup():
-    return '''
-<div id="app" class="row">
-    <div class="col-md-6 offset-md-3">
-        <h4>Comments</h4>
-        <ul class="timeline">
-            <li>
-                <form>
-                    <div class="form-group">
-                        <label for="commentInput">All comments are welcome, especially constructive ones!</label>
-                        <textarea v-model="newComment" class="form-control" id="commentInput" rows="3"></textarea>
-                        <button type="button" class="btn btn-primary" v-on:click="submitComment">Submit</button>
-                    </div>
-                </form>
-            </li>
-            <li v-for="comment in comments">
-                <p><b>{{ comment.createdAt }}</b></p>
-                <p>{{ comment.body }}</p>
-            </li>
-        </ul>
-    </div>
-</div>
-    '''
-
-
-def comments_js(project_id):
-    return '''
-<script>
-        loadComments = function() {
-            $.get('/topics/'''+project_id+'''/comments', function(data) {
-                console.log(typeof(data))
-                comments = []
-                for(d of data) {
-                    createdAt = new Date(d.CreatedAt)
-                    comments.push({createdAt: `${createdAt.toLocaleString()}`, body: d.Body})
-                }
-                app.$data.comments = comments
-            })
-        }
-
-        var app = new Vue({
-            el: '#app',
-            data: {
-                newComment: '',
-                comments: []
-            },
-            methods: {
-                submitComment: function() {
-                console.log(app.newComment)
-                $.post({
-                    url: '/topics/'''+project_id+'''/comments',
-                    data: JSON.stringify({Body: app.newComment}), 
-                    contentType: 'application/json'
-                }, function() {
-                    loadComments()
-                    app.newComment = ''
-                })
-            }
-        }
-    })
-
-   loadComments() 
-</script>
-'''
 
 
 def build_chapter_breadcrumb(chapter, part_index):
@@ -176,7 +39,7 @@ def build_chapter_breadcrumb(chapter, part_index):
     return breadcrumb
 
 
-def write_chapters(title, dirname, chapters, project_id):
+def write_chapters(title, dirname, chapters, project_id, mode):
     for i in range(0, len(chapters)):
         chapter = chapters[i]
         previous_link = '/{}'.format(dirname)
@@ -190,53 +53,25 @@ def write_chapters(title, dirname, chapters, project_id):
         for part_index in range(0, len(chapter['parts'])):
             paragraphs = chapter['parts'][part_index]
             part_number = part_index + 1
+            chapter_html = read_template('chapter')
+            chapter_html = chapter_html.replace('%TITLE%', '{} - {} ({}/{})'.format(title, chapter['title'], part_number, len(chapter['parts'])))
+            heading = ''
+            heading += '<h1>{}</h1>\n'.format(title)
+            heading += '<h2>{}</h2>\n'.format(chapter['title'])
+            heading += '<h3>Part {}/{}\n'.format(part_number, len(chapter['parts']))
+            chapter_html = chapter_html.replace('%HEADING%', heading)
+            lines = ''
+            for paragraph in paragraphs:
+                for line in paragraph:
+                    lines += clean_line(line)
+            chapter_html = chapter_html.replace('%LINES%', lines)
+            chapter_html = chapter_html.replace('%BREADCRUMB%', build_chapter_breadcrumb(chapter, part_index))
+            chapter_html = chapter_html.replace('%PREVIOUS_LINK%', previous_link)
+            chapter_html = chapter_html.replace('%NEXT_LINK%', next_link)
+            chapter_html = chapter_html.replace('%PROJECT_ID%', project_id)
+
             with open(os.path.join(dirname, '{}-{}.html'.format(chapter['id'], part_number)), 'w') as f:
-                f.write('''
-<!doctype html>
-<html lang="en">
-    <head>''')
-                f.write(google_analytics())
-                f.write('<title>A. Kuszyk | {} - {} ({}/{})</title>'.format(title, chapter['title'], part_number, len(chapter['parts'])))
-                f.write(bootstrap())
-                f.write('''
-                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>''')
-                f.write(timeline_css())
-                f.write('''
-    </head>
-    <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg">''')
-                f.write('<h1>{}</h1>\n'.format(title))
-                f.write('<h2>{}</h2>\n'.format(chapter['title']))
-                f.write('<h3>Part {}/{}\n'.format(part_number, len(chapter['parts'])))
-                f.write('''
-                <hr>
-            </div>
-            <div class="col-sm"></div>
-        </div>
-        <div class="row">
-            <div class="col-sm"></div>
-            <div class="col-lg">''')
-                for paragraph in paragraphs:
-                    for line in paragraph:
-                        f.write(clean_line(line))
-                f.write('''
-                <hr>
-                <p style="text-align:center">''')
-                f.write(build_chapter_breadcrumb(chapter, part_index))
-                f.write('<br><a href="{}">Previous Chapter</a> | <a href="{}">Next Chapter</a>'.format(previous_link, next_link))
-                f.write('''
-                </p>
-            </div>
-        </div>''')
-                f.write(comments_markup())
-                f.write(comments_js(project_id))
-                f.write(''' 
-    </div>
-    </body>
-</html>''')
+                f.write(chapter_html)
 
 
 def download_links(download_files):
@@ -255,25 +90,3 @@ def get_download_name(download):
         return 'EPUB'
     else:
         return ''
-
-
-def google_analytics():
-    return '''
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164357380-1"></script>
-<script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-164357380-1');
-</script>
-    '''
-
-
-def bootstrap():
-    return '''
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        
-    '''
-
-
