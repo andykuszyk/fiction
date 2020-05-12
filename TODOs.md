@@ -6,7 +6,8 @@
  - [x] Titles
  - [x] Pipeline from latex repo
  - [x] Parameterise generator to take project id as argument 
- - [ ] Include page name in comment title or body
  - [x] Split chapters into smaller pages accessible by URLs
  - [x] Add a download link to PDF and EPUB files
+ - [ ] Include page name in comment title or body
  - [ ] Add tracking to download links
+ - [ ] Add short story presentation mode which keeps everything on one page and just uses headers to break up the page.
