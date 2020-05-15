@@ -10,4 +10,5 @@
  - [x] Add a download link to PDF and EPUB files
  - [ ] Include page name in comment title or body
  - [ ] Add tracking to download links
- - [ ] Add short story presentation mode which keeps everything on one page and just uses headers to break up the page.
+ - [x] Add short story presentation mode which keeps everything on one page and just uses headers to break up the page.
+ - [x] Add reading time to tags
