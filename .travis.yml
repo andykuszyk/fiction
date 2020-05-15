@@ -11,3 +11,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_4394e5b6e01b_key -iv $encrypted_4394e5b6e01b_iv
   -in id_rsa.enc -out id_rsa -d
 - chmod 700 id_rsa
+notifications:
+  slack:
+    rooms:
+      secure: NZfD6mU1IzDV3skcSCg6SxNBIG8hdPwhi0kmdKnwdMa7yBbK01v4GwFUlsKMsQPRB+kTviFiYzmZuxAbBgPs96upStY4wTC4bd2m7oCU4CrkbTOdzuORc1CxFgdHsiwUSE1emyOqUQKRSdEJsfzL1hkCBFnLQaY1squQmtKb9O8phNAsLzdH/q20aiRFtI06XLV+7sI+zJsSY7RjrKQLTqfsOoVWrrqb+BAHpBkm/0XKxegQ/Lgq+IFlKYLjHbdXH6PpaYSDyrQz4fcVZQhSt+Gae9QB+OF0D2VuAeqfM5oWFB56M6FvTmRzPXod7v5LZPgOtlH5nqDhNZBxKNOUu5yGS5BSXjW/9VI2YzXo51cVXtuvMSj0SSrw9ZkQdTvU9m+EMKZPIOnfg5wAn/Un8u50IKiu16G9z/yF813QC37A/XaiC5nSTKDOzOjUzsVS54hKwo1t6UGon43fptIulE5Od9S+j+ufn+7Uj0P0CjYc2O1u5FTjBwLXqDHC060J+25asydZtw6mSnAw+0GyWdqC+yqynG+2PfbAtRQsvzoha6wwXNKIr/lWOrfCFmlLwMqcD7VZ4aYkEfD45sQfcdl22DjFAwnKlWq/nFyiDpPQYSW8ooBX+4MAm/zV8NhrA9VmmD4G822vye5916h1DEGYBjIDrNx1HyBGzxn1yqY=
