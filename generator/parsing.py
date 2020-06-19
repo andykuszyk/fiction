@@ -60,9 +60,21 @@ def build_parts(lines):
     return parts
 
 
+def has_chapters(lines):
+    for line in lines:
+        if '<h1' in line:
+            return True
+    return False
+
+
 def build_chapters(lines):
     chapters = []
     chapter = {}
+    if not has_chapters(lines):
+        chapter['title'] = ''
+        chapter['id'] = ''
+        chapter['lines'] = []
+        chapters.append(chapter)
     for line in lines:
         if '<h1' in line:
             chapter = {}
