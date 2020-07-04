@@ -12,47 +12,83 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     </head>
     <body>
-        <div class="container">
+        <div class="container" id="app">
             <div class="row">
                 <div class="col-lg">
-                    <h1 style="text-align:center;" class="display-1">A. Kuszyk</h1>
+                    <h1 class="center display-2">A. Kuszyk</h1>
                     <hr>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm"></div>
+            <div class="row center">
                 <div class="col-lg">
-                    <p>This site contains short stories and other works by Andy Kuszyk.</p>
-                    <p>It is posted here primarily as a means to garner feedback from readers - if you read a short story, please leave feedback by submitting a comment. All comments are welcomed - please be honest and constructive.</p>
+                    <h4>A portfolio of short fiction by A. Kuszyk.</h4>
+                    <h4>If you read a story, please leave constructive, anonymous feedback via a comment.</h4>
                 </div>
-                <div class="col-sm"></div>
             </div>
-            <div class="row">
+            <div v-for="story in stories" class="row">
                 <div class="col-lg">
-                    <h1 >Contents</h2>
-                    
                     <hr>
-                    <h3><a href="/the-kingdom-of-tharg">The Kingdom of Tharg</a></h3>
-                    <h5><span class="badge badge-secondary">novella</span> <span class="badge badge-secondary">sci-fi</span> <span class="badge badge-secondary">fantasy</span> <span class="badge badge-secondary">2 hour read</span></h5>
-                    <p>The Kingdom of Tharg follows Calir and his friends on a journey home through the mountains. When they are waylaid by an evil warlord and dark sorcery, Calir struggles to find his way home and rescue his friends.</p>
-
-                    <hr>
-                    <h3><a href="/skylon-tower">Skylon Tower</a></h3>
-                    <h5><span class="badge badge-secondary">short story</span> <span class="badge badge-secondary">sci-fi</span> <span class="badge badge-secondary">detective</span> <span class="badge badge-secondary">adult themes</span> <span class="badge badge-secondary">15 min read</span></h5>
-                    <p>Bartram Yang, private detective, is hired to investigate the mysterious disappearance of a young fashion model. Little does he know the job might be his last.</p>
-
-                    <hr>
-                    <h3><a href="/the-rockets-beneath-us">The Rockets Beneath Us</a></h3>
-                    <h5><span class="badge badge-secondary">short story</span> <span class="badge badge-secondary">sci-fi</span> <span class="badge badge-secondary">20 min read</span></h5>
-                    <p>Kurt is searching a dead city for a lost way out. Can he find it before his persuers catch up with him?</p>
-
-                    <hr>
-                    <h3><a href="/the-penthouse">The Penthouse</a></h3>
-                    <h5><span class="badge badge-secondary">short story</span> <span class="badge badge-secondary">sci-fi</span> <span class="badge badge-secondary">horror</span> <span class="badge badge-secondary">10 min read</span></h5>
-                    <p>Dark secrets about a Penthouse will come out sooner or later.</p>
+                    <div class="row">
+                        <div class="col-sm">
+                            <h2>
+                                <a class="tag text-dark" v-bind:href="story.url">{{ story.title }}</a>
+                            </h2>
+                        </div>
+                        <div class="col-sm">
+                            <h6>
+                                <template v-for="tag in story.tags">
+                                    <span class="align-middle tag badge badge-secondary">{{ tag }}</span>{{ ' ' }}
+                                </template>
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm italic">
+                            <h5>{{ story.blurb }}</h5>
+                        </div>
+                    </div>
                 </div>
+            </div>
         </div>
+        <hr>
+        <p class="center tag">&#169; A. Kuszyk 2020</p>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                stories: [
+                    {
+                        title: 'The Kingdom of Tharg',
+                        url: '/the-kingdom-of-tharg',
+                        tags: ['2 hrs', 'novella', 'sci-fi', 'fantasy'],
+                        blurb: 'The Kingdom of Tharg follows Calir and his friends on a journey home through the mountains. When they are waylaid by an evil warlord and dark sorcery, Calir struggles to find his way home and rescue his friends.'
+                    },
+                    {
+                        title: 'Skylon Tower',
+                        url: '/skylon-tower',
+                        tags: ['15 mins', 'short story', 'sci-fi', 'detective', 'adult themes'],
+                        blurb: 'Bertram Yang, private detective, is hired to investigate the mysterious disappearance of a young fashion model. Little does he know the job might be his last.'
+                    },
+                    {
+                        title: 'The Rockets Beneath Us',
+                        url: 'the-rockets-beneath-us',
+                        tags: ['20 mins', 'short story', 'sci-fi'],
+                        blurb: 'Kurt is searching a dead city for a lost way out. Can he find it before his persuers catch up with him?'
+                    },
+                    {
+                        title: 'The Penthouse',
+                        url: '/the-penthouse',
+                        tags: ['10 mins', 'short story', 'sci-fi', 'horror'],
+                        blurb: 'Dark secrets about a Penthouse will come out sooner or later.'
+                    }
+                ]
+            }
+        })
+    </script>
     </body>
 </html>

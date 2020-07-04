@@ -1,0 +1,15 @@
+* {
+    font-family: Garamond;
+}
+
+.center {
+    text-align: center;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.tag {
+    font-family: Helvetica;
+}
