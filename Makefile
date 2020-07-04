@@ -22,6 +22,10 @@ generate-the-rockets-beneath-us:
 	rm -rf the-rockets-beneath-us/
 	python3 -m generator.generator the-rockets-beneath-us.html 16281153 short
 
+generate-the-penthouse:
+	rm -rf the-penthouse
+	python3 -m generator.generator the-penthouse.html 19329824 short
+
 test:
 	python3 -m generator.tests.parsing
 
