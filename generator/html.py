@@ -32,7 +32,7 @@ def write_index(dirname, chapters, title, filename):
     index_html = index_html.replace('%TITLE%', title)
     chapter_links = ''
     for chapter in chapters:
-        chapter_links += '<a href="/{}/{}-1.html"><h3><li>{}</li></h3></a>\n'.format(dirname, chapter['id'], chapter['title'])
+        chapter_links += '<a class="text-dark" href="/{}/{}-1.html"><h3><li>{}</li></h3></a>\n'.format(dirname, chapter['id'], chapter['title'])
     index_html = index_html.replace('%CHAPTER_LINKS%', chapter_links)
     index_html = index_html.replace('%DOWNLOAD_LINKS%', download_links(parsing.downloads(filename, dirname)))
     with open(os.path.join(dirname, 'index.html'), 'w') as f:
@@ -54,7 +54,7 @@ def build_chapter_breadcrumb(chapter, part_index):
         if i == part_index:
             breadcrumb += ' {} |'.format(part_index + 1)
         else:
-            breadcrumb += ' <a href="{}-{}.html">{}</a> |'.format(chapter['id'], i + 1, i + 1)
+            breadcrumb += ' <a class="text-dark" href="{}-{}.html">{}</a> |'.format(chapter['id'], i + 1, i + 1)
     return breadcrumb
 
 
@@ -85,7 +85,7 @@ def write_chapters(title, dirname, chapters, project_id):
                     lines += clean_line(line)
             chapter_html = chapter_html.replace('%LINES%', lines)
             chapter_html = chapter_html.replace('%BREADCRUMB%', build_chapter_breadcrumb(chapter, part_index))
-            chapter_links = '<a href="{}">Previous Chapter</a> | <a href="{}">Next Chapter</a>'.format(previous_link, next_link)
+            chapter_links = '<a class="text-dark" href="{}">Previous Chapter</a> | <a class="text-dark" href="{}">Next Chapter</a>'.format(previous_link, next_link)
             chapter_html = chapter_html.replace('%CHAPTER_LINKS%', chapter_links)
             chapter_html = chapter_html.replace('%PROJECT_ID%', project_id)
 
@@ -98,7 +98,7 @@ def download_links(download_files):
         return ''
     links = '<h3>'
     for download in download_files:
-        links += '<a href="{}">{}</a>  |  '.format(download, get_download_name(download))
+        links += '<a class="text-dark" href="{}">{}</a>  |  '.format(download, get_download_name(download))
     return '{}</h3>'.format(links[:-4])
 
 

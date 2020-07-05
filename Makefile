@@ -26,6 +26,8 @@ generate-the-penthouse:
 	rm -rf the-penthouse
 	python3 -m generator.generator the-penthouse.html 19329824 short
 
+generate-all: generate-the-penthouse generate-the-rockets-beneath-us generate-skylon-tower generate-the-kingdom-of-tharg
+
 test:
 	python3 -m generator.tests.parsing
 
