@@ -107,5 +107,7 @@ def get_download_name(download):
         return 'PDF'
     elif 'epub' in download:
         return 'EPUB'
+    elif 'docx' in download:
+        return 'DOCX'
     else:
         return ''
