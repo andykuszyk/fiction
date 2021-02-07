@@ -12,3 +12,5 @@
  - [ ] Add tracking to download links
  - [x] Add short story presentation mode which keeps everything on one page and just uses headers to break up the page.
  - [x] Add reading time to tags
+ - [ ] Change style of horizontal breaks to look more antique.
+ - [ ] Use javascript to turn chapters into pages that fit on the reader's screen, rather than paging by paragraphs.
