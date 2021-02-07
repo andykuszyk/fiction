@@ -109,7 +109,7 @@ def build_chapters(lines):
 def downloads(filename, dirname):
     title = os.path.splitext(filename)[0]
     files = []
-    for extension in ['pdf', 'epub']:
+    for extension in ['pdf', 'epub', 'docx']:
         download = '{}.{}'.format(title, extension)
         if os.path.exists(download):
             files.append(download)
