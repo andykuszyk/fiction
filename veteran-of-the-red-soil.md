@@ -1,6 +1,5 @@
-Earth
-=====
-
+# Veteran of the Red Soil
+## Earth
 Martha, my love, I'm so glad you're here. I'll be fine now. They don't
 let you have visitors unless you're going to be fine. It's so heavy
 here--I must be back on Earth? It feels like a lifetime since we last
@@ -462,9 +461,7 @@ I must say though, all this conversation has left me exhausted. I think
 I'll just take short nap, and then I'll tell you all about it. I'll just
 close my eyes and--
 
-Mars
-====
-
+## Mars
 We agreed a rendezvous point, about ten kilometres away, and set off
 immediately. Taking into account the terrain and the gradient, I
 expected to meet the others by midday. Hiking in a tux is actually quite
@@ -919,9 +916,7 @@ rather tired now. Despite the air in here--it's cold isn't it?--I'm
 awfully drowsy, all of a sudden. I--I'll just take another nap, Martha,
 and then--
 
-Mons
-====
-
+## Mons
 As I predicted, we made it to the caldera's rim the following day. It
 was mid-afternoon when we reached it, and we stood in silence to take in
 the view. The summit ridge is a rough ring of rock that sweeps out into
