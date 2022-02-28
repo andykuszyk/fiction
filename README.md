@@ -7,9 +7,18 @@ The battlefront on Mars is bleak compared to its alure on Earth.
 
  ---
 
-## The Rockets Beneath Us
+## [The Rockets Beneath Us](./the-rockets-beneath-us.md)
 Kurt is searching a dead city for a lost way out. Can he find it before his persuers catch up with him?
 
 `20 mins` | `sci-fi`
 
 First published: 19th June 2020.
+
+---
+
+## [Skylon Tower](./skylon-tower.md)
+Bertram Yang, private detective, is hired to investigate the mysterious disappearance of a young fashion model. Little does he know the job might be his last.
+
+`15 mins` | `sci-fi` | `detective` | `adult themes`
+
+First published 12th May 2020.
