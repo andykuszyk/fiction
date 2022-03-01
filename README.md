@@ -1,4 +1,4 @@
-## [Veteran of the Red Soil](./veteran-of-the-red-soil.md) `60 mins` | `sci-fi`
+## [Veteran of the Red Soil](./veteran-of-the-red-soil.md) `60 mins` `sci-fi`
 The battlefront on Mars is bleak compared to its alure on Earth. 
 
  Published: 25th March 2021.
