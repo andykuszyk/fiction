@@ -5,14 +5,21 @@ The battlefront on Mars is bleak compared to its alure on Earth.
 
  ---
 
-## [The Rockets Beneath Us](./the-rockets-beneath-us.md) < `20 mins` | `sci-fi` >
+## [The Penthouse](./the-penthouse.md) `10 mins` `sci-fi` `horror`
+Dark secrets about a Penthouse will come out sooner or later.
+
+Published: 4th July 2020.
+
+---
+
+## [The Rockets Beneath Us](./the-rockets-beneath-us.md) `20 mins` `sci-fi`
 Kurt is searching a dead city for a lost way out. Can he find it before his persuers catch up with him?
 
 Published: 19th June 2020.
 
 ---
 
-## [Skylon Tower](./skylon-tower.md) [ `15 mins` | `sci-fi` | `detective` | `adult themes` ]
+## [Skylon Tower](./skylon-tower.md) `15 mins` `sci-fi` `detective` `adult themes`
 Bertram Yang, private detective, is hired to investigate the mysterious disappearance of a young fashion model. Little does he know the job might be his last.
 
 Published 12th May 2020.
