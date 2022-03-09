@@ -25,4 +25,4 @@ Published: 19th June 2020.
 ## [Skylon Tower](./skylon-tower.md) `15 mins` `sci-fi` `detective` `adult themes`
 Bertram Yang, private detective, is hired to investigate the mysterious disappearance of a young fashion model. Little does he know the job might be his last.
 
-Published 12th May 2020.
+Published: 12th May 2020.
