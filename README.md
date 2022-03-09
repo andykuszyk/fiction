@@ -1,12 +1,28 @@
-# [akuszyk.com](https://akuszyk.com)
-This repository holds the static files and site generator for my fiction site, [akuszyk.com](https://akuszyk.com).
+# Short Fiction by A. Kuszyk
+---
 
-It consists primarily of:
-* `index.html` - the static landing page for the site;
-* `generate-site.py` - the site generator for turning HTML book files (generated from LaTeX and `pandoc`) into formatted pages, with comments, tracking, etc.
+## [Veteran of the Red Soil](./veteran-of-the-red-soil.md) `60 mins` `sci-fi`
+The battlefront on Mars is bleak compared to its alure on Earth. 
 
-## Usage
-The `make` targets beginning with `generate-` should be used to generate the sites in sub-directories.
+ Published: 25th March 2021.
 
-## Development
-`make watch` can be used to run the site locally on port 80.
+ ---
+
+## [The Penthouse](./the-penthouse.md) `10 mins` `sci-fi` `horror`
+Dark secrets about a Penthouse will come out sooner or later.
+
+Published: 4th July 2020.
+
+---
+
+## [The Rockets Beneath Us](./the-rockets-beneath-us.md) `20 mins` `sci-fi`
+Kurt is searching a dead city for a lost way out. Can he find it before his persuers catch up with him?
+
+Published: 19th June 2020.
+
+---
+
+## [Skylon Tower](./skylon-tower.md) `15 mins` `sci-fi` `detective` `adult themes`
+Bertram Yang, private detective, is hired to investigate the mysterious disappearance of a young fashion model. Little does he know the job might be his last.
+
+Published: 12th May 2020.
