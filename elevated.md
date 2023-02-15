@@ -130,7 +130,7 @@
 
 *Female:* "What was it like for you, Jim, personally? You had so much at stake; your future, your dream. And you're the only one left to tell us now. What was it like to be there?"
 
-> A long silence, unbroken by either voice.
+*A long silence, unbroken by either voice.*
 
 *Male:* "I remember the sounds more than anything. There was a crack, like a whip, but longer. More like an explosion&#x2013;but not like dynamite. Like a volcano blowing itself to pieces, but muffled. Up in the clouds. And then, there was this rushing noise. Ghastly, it was. Makes me sweat to think of it. Howling, screaming, tearing, louder and louder, and then&#x2026;darkness.
 
@@ -146,7 +146,7 @@
 
 *Female:* "It is, but still. We appreciate your honesty, Jim, we all do. Everyone here, everyone listening. You're the last person left who can tell us the story. Your story."
 
-> A pause.
+*A pause.*
 
 *Female:* "Can I ask you one more question, Jim?"
 
@@ -172,6 +172,4 @@
 
 *Female:* "Thank you Jim, that would be lovely. Jim Huck, ladies and gentleman, last surviving member of the elevated, and the last soul alive to have been to space and back, and lived to tell the take.
 
----
-
-> This transcript has been taken from the radio transmission archives of the beginning of the post-contact era. It illustrates the prevailing sentiments of Humans during this period, and is a useful benchmark of attitudes towards us at the beginning of the Direct Observation.
+*This transcript has been taken from the radio transmission archives of the beginning of the post-contact era. It illustrates the prevailing sentiments of Humans during this period, and is a useful benchmark of attitudes towards us at the beginning of the Direct Observation.*
